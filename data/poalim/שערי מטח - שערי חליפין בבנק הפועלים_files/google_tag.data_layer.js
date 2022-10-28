@@ -1,0 +1,1 @@
+var dataLayer = [{"gtm.whitelist":["google"],"gtm.blacklist":["customScripts","customPixels"]}];

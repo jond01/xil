@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="63px" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>flag / turkish</title>
+    <defs>
+        <circle id="path-1" cx="22.5" cy="22.5" r="22.5"></circle>
+        <filter x="-35.6%" y="-24.4%" width="171.1%" height="171.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M45,22.4998236 C45,34.9262683 34.9253679,45 22.4998236,45 C10.0739266,45 0,34.9262683 0,22.4998236 C0,10.0737317 10.0739266,0 22.4998236,0 C34.9253679,0 45,10.0737317 45,22.4998236 L45,22.4998236 Z" id="path-3"></path>
+    </defs>
+    <g id="המרת-מטח" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="45-45px" transform="translate(9.000000, -321.000000)">
+            <g id="flag-/-turkish" transform="translate(0.000000, 325.000000)">
+                <g id="Ellipse_79" fill-rule="nonzero">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="turky" stroke-width="1" fill-rule="evenodd">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-9948"></g>
+                    <polygon id="Fill-9947" fill="#FF1612" mask="url(#mask-4)" points="0 45 45 45 45 0 0 0"></polygon>
+                    <path d="M19.7811628,10.6063953 C23.8203488,10.6063953 27.377093,12.6606977 29.4680233,15.7803488 C27.7643023,14.0563953 25.3848837,12.9889535 22.7522093,12.9889535 C17.5646512,12.9889535 13.3604651,17.1387209 13.3604651,22.2596512 C13.3604651,27.3805814 17.5646512,31.5317442 22.7522093,31.5317442 C25.3848837,31.5317442 27.7643023,30.4615116 29.4694186,28.7382558 C27.3777907,31.8582558 23.8203488,33.9136047 19.7811628,33.9136047 C13.3447674,33.9136047 8.12651163,28.6953488 8.12651163,22.2596512 C8.12651163,15.8239535 13.3447674,10.6063953 19.7811628,10.6063953 Z M33.7447674,16.7117442 L36.1486047,20.1006977 L40.1093023,18.8448837 L37.6315116,22.1787209 L40.0482558,25.557907 L36.1112791,24.2302326 L33.6453488,27.5727907 L33.6903488,23.4198837 L29.7498837,22.1072093 L33.7151163,20.867093 L33.7447674,16.7117442 L33.7447674,16.7117442 Z" id="Fill-9949" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

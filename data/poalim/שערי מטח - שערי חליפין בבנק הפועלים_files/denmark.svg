@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="63px" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>flag / denmark</title>
+    <defs>
+        <circle id="path-1" cx="22.5" cy="22.5" r="22.5"></circle>
+        <filter x="-35.6%" y="-24.4%" width="171.1%" height="171.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M45.1420313,22.6924799 C45.1420313,35.1183769 35.0677519,45.1926562 22.6418549,45.1926562 C10.2152523,45.1926562 0.14203125,35.1183769 0.14203125,22.6924799 C0.14203125,10.2655245 10.2152523,0.19265625 22.6418549,0.19265625 C35.0677519,0.19265625 45.1420313,10.2655245 45.1420313,22.6924799 L45.1420313,22.6924799 Z" id="path-3"></path>
+    </defs>
+    <g id="המרת-מטח" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="45-45px" transform="translate(9.000000, -646.000000)">
+            <g id="flag-/-denmark" transform="translate(0.000000, 650.000000)">
+                <g id="Ellipse_79" fill-rule="nonzero">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="denemark" stroke-width="1" fill-rule="evenodd">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-3690"></g>
+                    <path d="M-8.26628906,18.1300781 L11.91375,18.1300781 L11.91375,0.19265625 L-8.26628906,0.19265625 L-8.26628906,18.1300781 Z M20.8835156,0.19265625 L59.0009766,0.19265625 L59.0009766,45.0376172 L20.8835156,45.0376172 L20.8835156,27.0994922 L59.0009766,27.0994922 L59.0009766,18.1300781 L20.8835156,18.1300781 L20.8835156,0.19265625 Z M-8.26628906,45.0372656 L11.91375,45.0372656 L11.91375,27.0994922 L-8.26628906,27.0994922 L-8.26628906,45.0372656 Z" id="Fill-3689" fill="#FF1612" mask="url(#mask-4)"></path>
+                    <polyline id="Fill-3691" fill="#F4F4F4" mask="url(#mask-4)" points="11.91375 0.19265625 20.8835156 0.19265625 20.8835156 18.1300781 59.0009766 18.1300781 59.0009766 27.0994922 20.8835156 27.0994922 20.8835156 45.0376172 11.91375 45.0376172 11.91375 27.0994922 -8.26628906 27.0994922 -8.26628906 18.1300781 11.91375 18.1300781 11.91375 0.19265625"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
