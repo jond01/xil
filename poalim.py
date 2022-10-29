@@ -1,3 +1,7 @@
+"""
+Scrape Bank Hapoalim exchange data publicly visible on
+https://www.bankhapoalim.co.il/he/foreign-currency/exchange-rates
+"""
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -26,7 +30,11 @@ def _get_url(t: datetime) -> str:
     return _POALIM_QUERY + t.strftime(_DATE_FORMAT)
 
 
-def get_df(t: datetime | None = None) -> pd.DataFrame:
+def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
+    """
+    Get poalim exchange data from now or a specified date t as a pandas DataFrame.
+    If filter_cols is true, only the relevant columns will be returned.
+    """
     if t is None:
         # TODO: on Sunday and Saturday there are no exchange rates, choose the last
         #  active day. To check the day use t.weekday() and compare to:
@@ -34,7 +42,8 @@ def get_df(t: datetime | None = None) -> pd.DataFrame:
         t = datetime.now(IL_TZ)
 
     df = pd.read_json(_get_url(t))
-    df = df[_RELEVANT_COLS]
+    if filter_cols:
+        df = df[_RELEVANT_COLS]
     return df
 
 
