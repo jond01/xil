@@ -20,11 +20,11 @@ import pandas as pd
 
 from xil._headers import UA_HEADER
 
-LEUMI_URL = "\
+_LEUMI_URL = "\
 https://www.bankleumi.co.il/vgnprod/currency/ajax/new_shaar_muskamim_data.json"
 
 
-s = pd.read_json(LEUMI_URL, typ="series", storage_options=UA_HEADER)
+s = pd.read_json(_LEUMI_URL, typ="series", storage_options=UA_HEADER)
 date = s.yatzigDate  # Hour in `s.topHeaderText`
 df = pd.DataFrame.from_records(s.data)
 
