@@ -18,13 +18,13 @@ Looks like the business data is identical to the private data.
 """
 import pandas as pd
 
+from xil._headers import UA_HEADER
+
 LEUMI_URL = "\
 https://www.bankleumi.co.il/vgnprod/currency/ajax/new_shaar_muskamim_data.json"
-USER_AGENT = "\
-Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) \
-Chrome/104.0.5112.79 Safari/537.36"
 
-s = pd.read_json(LEUMI_URL, typ="series", storage_options={'User-Agent': USER_AGENT})
+
+s = pd.read_json(LEUMI_URL, typ="series", storage_options=UA_HEADER)
 date = s.yatzigDate  # Hour in `s.topHeaderText`
 df = pd.DataFrame.from_records(s.data)
 
