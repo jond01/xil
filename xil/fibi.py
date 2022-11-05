@@ -14,12 +14,15 @@ from xil._headers import UA_HEADER
 
 _FIBI_URL = "http://apps.fibi.co.il/Matach/matach.aspx"
 _ENCODING = "iso-8859-8"
-_TIME_IDX = 3
-_DATA_IDX = 4
+_MATCH = "Spot"
+_HEADER = [0, 1]
+_ATTRS = {"class": "clsPart"}
 
 req = urllib.request.Request(_FIBI_URL, headers=UA_HEADER)
 with urllib.request.urlopen(req) as response:
-    dfs = pd.read_html(response, header=0, encoding=_ENCODING)
+    dfs = pd.read_html(
+        response, match=_MATCH, header=_HEADER, encoding=_ENCODING, attrs=_ATTRS
+    )
 
-time_str = dfs[_TIME_IDX].columns[0]
-df = dfs[_DATA_IDX]
+df = dfs[0]  # It is guaranteed to have at least one element - otherwise an exception
+# TODO: filter out the irrelevant columns
