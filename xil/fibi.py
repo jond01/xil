@@ -17,6 +17,14 @@ _ENCODING = "iso-8859-8"
 _MATCH = "Spot"
 _HEADER = [0, 1]
 _ATTRS = {"class": "clsPart"}
+_RELEVANT_COLS = [
+    ("Spot", "נמוך"),
+    ("Spot", "גבוה"),
+    ("Same day", "נמוך"),
+    ("Same day", "גבוה"),
+    ("יחידה", "יחידה"),
+    ("מטבע", "מטבע"),
+]
 
 req = urllib.request.Request(_FIBI_URL, headers=UA_HEADER)
 with urllib.request.urlopen(req) as response:
@@ -25,4 +33,4 @@ with urllib.request.urlopen(req) as response:
     )
 
 df = dfs[0]  # It is guaranteed to have at least one element - otherwise an exception
-# TODO: filter out the irrelevant columns
+df = df[_RELEVANT_COLS]
