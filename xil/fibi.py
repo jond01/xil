@@ -10,7 +10,7 @@ import urllib.request
 
 import pandas as pd
 
-from xil._headers import UA_HEADER
+from xil._headers import get_url_response
 
 _FIBI_URL = "http://apps.fibi.co.il/Matach/matach.aspx"
 _ENCODING = "iso-8859-8"
@@ -26,8 +26,7 @@ _RELEVANT_COLS = [
     ("מטבע", "מטבע"),
 ]
 
-req = urllib.request.Request(_FIBI_URL, headers=UA_HEADER)
-with urllib.request.urlopen(req) as response:
+with get_url_response(_FIBI_URL) as response:
     dfs = pd.read_html(
         response, match=_MATCH, header=_HEADER, encoding=_ENCODING, attrs=_ATTRS
     )
