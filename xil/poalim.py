@@ -50,7 +50,7 @@ def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
 if __name__ == "__main__":
     df = get_df(datetime(2022, 10, 25))
     with pd.option_context(
-        'display.max_rows', None, 'display.max_columns', None, 'display.width', None
+        "display.max_rows", None, "display.max_columns", None, "display.width", None
     ):
         print(df)
     print(df.iloc[0])

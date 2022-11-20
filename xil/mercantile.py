@@ -8,7 +8,8 @@ The structure is identical Discount's, but the data is different.
 # TODO: avoid code duplication between this module and `discount`.
 import pandas as pd
 
-_MERCANTILE_URL = "https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate"
+_MERCANTILE_URL = "\
+https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate"
 
 df = pd.read_html(_MERCANTILE_URL, header=[0, 1])[0]
 

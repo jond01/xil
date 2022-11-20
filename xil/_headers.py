@@ -6,7 +6,7 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) \
 AppleWebKit/537.36 (KHTML, like Gecko) \
 Chrome/107.0.0.0 Safari/537.36"
 
-UA_HEADER = {'User-Agent': USER_AGENT}
+UA_HEADER = {"User-Agent": USER_AGENT}
 
 
 def get_url_response(
