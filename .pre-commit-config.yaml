@@ -14,9 +14,10 @@ repos:
     rev: 22.10.0
     hooks:
       - id: black
-  - repo: https://github.com/PyCQA/pylint
-    rev: v2.15.6
+  - repo: local
     hooks:
       - id: pylint
-        additional_dependencies:
-          - pandas == 1.5.1
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
