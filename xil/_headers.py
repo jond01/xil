@@ -1,8 +1,8 @@
 """
 Shared functionalities for retrieving URLs' data when headers are needed
 """
-import urllib.request
 import http.client
+import urllib.request
 
 USER_AGENT = "\
 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) \

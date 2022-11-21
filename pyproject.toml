@@ -37,6 +37,9 @@ pylint = "^2.15.6"
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
+[tool.isort]
+profile = "black"
+
 [tool.pylint]
 enable = ["I"]
 

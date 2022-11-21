@@ -8,7 +8,7 @@ expected to be deprecated in the foreseeable future.
 """
 import pandas as pd
 
-from xil._headers import get_url_response, UA_HEADER
+from xil._headers import UA_HEADER, get_url_response
 
 _UNION_URL = "\
 http://www.unionbank.co.il/Igud/%D7%A9%D7%95%D7%A7-%D7%94%D7%94%D7%95%D7%9F-%D7%95%D7%9E%D7%98%D7%97/%D7%9E%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A5/%D7%A9%D7%A2%D7%A8%D7%99-%D7%9E%D7%98%D7%97"
