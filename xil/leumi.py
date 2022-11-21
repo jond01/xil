@@ -25,6 +25,7 @@ https://www.bankleumi.co.il/vgnprod/currency/ajax/new_shaar_muskamim_data.json"
 
 
 s = pd.read_json(_LEUMI_URL, typ="series", storage_options=UA_HEADER)
+# pylint: disable-next=no-member
 date = s.yatzigDate  # Hour in `s.topHeaderText`
 df = pd.DataFrame.from_records(s.data)
 

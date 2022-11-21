@@ -5,7 +5,8 @@ https://www.discountbank.co.il/DB/private/general-information/foreign-currency-t
 """
 import pandas as pd
 
-_DISCOUNT_URL = "https://www.discountbank.co.il/DB/private/general-information/foreign-currency-transfers/exchange-rates"
+_DISCOUNT_URL = "\
+https://www.discountbank.co.il/DB/private/general-information/foreign-currency-transfers/exchange-rates"
 
 df = pd.read_html(_DISCOUNT_URL, header=[0, 1])[0]
 

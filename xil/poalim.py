@@ -2,6 +2,8 @@
 Scrape Bank Hapoalim exchange data publicly visible on
 https://www.bankhapoalim.co.il/he/foreign-currency/exchange-rates
 """
+# pylint: disable=invalid-name
+
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -35,7 +37,10 @@ def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
     Get poalim exchange data from now or a specified date t as a pandas DataFrame.
     If filter_cols is true, only the relevant columns will be returned.
     """
+    # pylint: disable=redefined-outer-name
+
     if t is None:
+        # pylint: disable-next=fixme
         # TODO: on Sunday and Saturday there are no exchange rates, choose the last
         #  active day. To check the day use t.weekday() and compare to:
         #  import calendar, calendar.SATURDAY or calendar.SUNDAY

@@ -1,3 +1,6 @@
+"""
+Shared functionalities for retrieving URLs' data when headers are needed
+"""
 import urllib.request
 import http.client
 
@@ -12,6 +15,9 @@ UA_HEADER = {"User-Agent": USER_AGENT}
 def get_url_response(
     url: str, *, headers: dict[str, str] | None = None, default_headers: bool = True
 ) -> http.client.HTTPResponse:
+    """
+    Return the response from a URL with custom headers
+    """
     if headers is None:
         if default_headers:
             headers = UA_HEADER

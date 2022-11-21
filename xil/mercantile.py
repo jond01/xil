@@ -5,7 +5,9 @@ https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate
 
 The structure is identical Discount's, but the data is different.
 """
+# pylint: disable-next=fixme
 # TODO: avoid code duplication between this module and `discount`.
+
 import pandas as pd
 
 _MERCANTILE_URL = "\
