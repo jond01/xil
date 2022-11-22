@@ -38,6 +38,10 @@ pylint = "^2.15.6"
 mypy = "^0.991"
 pandas-stubs = "^1.5.1.221024"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.0"
+coverage = "^6.5.0"
+
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
