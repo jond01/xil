@@ -26,13 +26,17 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">= 3.10, < 3.11"
 pandas = "^1.5.1"
 beautifulsoup4 = {version = "^4.11.1", extras = ["lxml", "html5lib"]}
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^2.20.0"
 pylint = "^2.15.6"
+
+[tool.poetry.group.typing.dependencies]
+mypy = "^0.991"
+pandas-stubs = "^1.5.1.221024"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
@@ -42,6 +46,13 @@ profile = "black"
 
 [tool.pylint]
 enable = ["I"]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_return_any = true
+show_error_codes = true
 
 [build-system]
 requires = ["poetry-core"]

@@ -26,7 +26,11 @@ _RELEVANT_COLS = [
 
 with get_url_response(_FIBI_URL) as response:
     dfs = pd.read_html(
-        response, match=_MATCH, header=_HEADER, encoding=_ENCODING, attrs=_ATTRS
+        response,  # type: ignore[arg-type]
+        match=_MATCH,
+        header=_HEADER,
+        encoding=_ENCODING,
+        attrs=_ATTRS,
     )
 
 df = dfs[0]  # It is guaranteed to have at least one element - otherwise an exception

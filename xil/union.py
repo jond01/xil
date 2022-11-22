@@ -24,7 +24,7 @@ _UNION_HEADERS = UA_HEADER | _UNION_COOKIE_HEADER
 _HEADER = [0, 1]
 
 with get_url_response(_UNION_URL, headers=_UNION_HEADERS) as response:
-    df = pd.read_html(response, header=_HEADER)[0]
+    df = pd.read_html(response, header=_HEADER)[0]  # type: ignore[arg-type]
 
 df = df.drop(("Unnamed: 7_level_0", "מכירה"), axis=1)  # empty (NaNs) column
 
