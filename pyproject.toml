@@ -58,6 +58,9 @@ warn_unused_ignores = true
 warn_return_any = true
 show_error_codes = true
 
+[tool.pytest.ini_options]
+filterwarnings = ["error"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
