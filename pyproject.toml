@@ -50,6 +50,8 @@ profile = "black"
 
 [tool.pylint]
 enable = ["I"]
+fail-on = ["useless-suppression"]
+good-names = ["df"]
 
 [tool.mypy]
 check_untyped_defs = true
