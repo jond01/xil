@@ -35,23 +35,28 @@ _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "שקל חדש": CurrencyCode.ILS,
     'דולר ארה"ב': CurrencyCode.USD,
     "לירה שטרלינג": CurrencyCode.GBP,
+    'ליש"ט': CurrencyCode.GBP,
     "יין יפני": CurrencyCode.JPY,
+    "ין יפני": CurrencyCode.JPY,
     "אירו": CurrencyCode.EUR,
     "דולר אוסטרלי": CurrencyCode.AUD,
     "דולר קנדי": CurrencyCode.CAD,
     "כתרים דניים": CurrencyCode.DKK,
+    "כתר דני": CurrencyCode.DKK,
     "כתר נורבגי": CurrencyCode.NOK,
     'רנד דרא"פ': CurrencyCode.ZAR,
+    'ראנד דרא"פ': CurrencyCode.ZAR,
     "כתר שוודי": CurrencyCode.SEK,
     "פרנק שוויצרי": CurrencyCode.CHF,
     "דולר הונג קונג": CurrencyCode.HKD,
     "דולר סינגפור": CurrencyCode.SGD,
     "דולר ניו זילנד": CurrencyCode.NZD,
+    "דולר ניוזלנדי": CurrencyCode.NZD,
     "לירה טורקית": CurrencyCode.TRY,
 }
 
 
-class CurrencyNotSupportedError(KeyError):
+class CurrencyNotSupportedError(ValueError):
     """Raised when a currency is not supported"""
 
 
