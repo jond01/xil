@@ -72,7 +72,8 @@ def currency_code_from_heb_name(heb_currency_name: str) -> CurrencyCode:
 
 def currency_from_heb_name(heb_currency_name: str) -> str:
     """Converts a Hebrew currency name to a currency string"""
-    return currency_code_from_heb_name(heb_currency_name).name
+    # noinspection PyTypeChecker
+    return currency_code_from_heb_name(heb_currency_name).value
 
 
 if __name__ == "__main__":
