@@ -29,6 +29,7 @@ class CurrencyCode(StrEnum):
     SGD = "SGD"  # Singapore Dollar
     NZD = "NZD"  # New Zealand Dollar
     TRY = "TRY"  # Turkish Lira
+    JOD = "JOD"  # Jordanian Dinar
 
 
 _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
@@ -53,6 +54,8 @@ _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "דולר ניו זילנד": CurrencyCode.NZD,
     "דולר ניוזלנדי": CurrencyCode.NZD,
     "לירה טורקית": CurrencyCode.TRY,
+    "לירה טורקית חדשה": CurrencyCode.TRY,
+    "דינר ירדני": CurrencyCode.JOD,
 }
 
 
