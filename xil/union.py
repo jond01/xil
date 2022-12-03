@@ -13,11 +13,11 @@ from xil._headers import UA_HEADER, get_url_response
 _UNION_URL = "\
 http://www.unionbank.co.il/Igud/%D7%A9%D7%95%D7%A7-%D7%94%D7%94%D7%95%D7%9F-%D7%95%D7%9E%D7%98%D7%97/%D7%9E%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A5/%D7%A9%D7%A2%D7%A8%D7%99-%D7%9E%D7%98%D7%97"
 
-# The "rbzid" cookie is required for rendering the HTML on Union bank website.
-# Note that it may be outdated
+# The "rbzid" cookie (https://www.reblaze.com/) is required for rendering the HTML on
+# Union bank website. Note that it must be updated to a valid value.
 _UNION_COOKIE_HEADER = {
     # pylint: disable-next=line-too-long
-    "Cookie": "rbzid=tj1/yktlbTJ1tw1pMf21e3oDjy0XYos7/HzuSgXRuRmIkH1bs5xYEW2wAfxl6ap9YMO2sSUHK9IfejKaQ5g8T4yqkKBD6lUEMW9xy+m+AAbyKX0CIZlBl6pSQNftM767DC2qeSCmet0mPZsIs6WiCCtefXogJNcc8QImoXIIgqHHYzNPqu6mHVmyBawZ9EqAh8NIwBl3mNQhmPcQbQMMqLoe+3wkHM3ExAeqp9vCzTijAnb1YlZH2UG7c0JD5kDXS6bhKKejD7ydPk6LgdN3XFlLeKOwDHyIyzM8xNHKcVU="
+    "Cookie": "rbzid=XD5oSc9AOoHxYtF8x5nsKrrmZ9ahj6TlIb9sBbQsGjDU6i37/SKgK9TOw3/V5n/ImOLL/G8vjtq/6tgtIscGzCIedCS0siLy7PX7sYtI5S15eEy64oaBtznWHUHGeC1dJqHo4801y0/s/pgjLNcGuka7rLeiWXFIoNUkpHVOpyxQaI6ciQFcqJi5pFTx1mMDBWYerF4yc8bVqBJipSgvX8+pOSrAZrGo/pTac9H6l54FzSYEECrYvHdbDI/3ME1lHfFWj94olKb8SQSJhZzoGA="
 }
 
 _UNION_HEADERS = UA_HEADER | _UNION_COOKIE_HEADER
