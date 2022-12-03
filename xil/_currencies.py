@@ -30,6 +30,7 @@ class CurrencyCode(StrEnum):
     NZD = "NZD"  # New Zealand Dollar
     TRY = "TRY"  # Turkish Lira
     JOD = "JOD"  # Jordanian Dinar
+    AED = "AED"  # UAE Dirham
 
 
 _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
@@ -45,8 +46,10 @@ _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "כתרים דניים": CurrencyCode.DKK,
     "כתר דני": CurrencyCode.DKK,
     "כתר נורבגי": CurrencyCode.NOK,
+    "כתר נורווגי": CurrencyCode.NOK,
     'רנד דרא"פ': CurrencyCode.ZAR,
     'ראנד דרא"פ': CurrencyCode.ZAR,
+    "רנד דרום אפריקני": CurrencyCode.ZAR,
     "כתר שוודי": CurrencyCode.SEK,
     "פרנק שוויצרי": CurrencyCode.CHF,
     "דולר הונג קונג": CurrencyCode.HKD,
@@ -56,6 +59,7 @@ _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "לירה טורקית": CurrencyCode.TRY,
     "לירה טורקית חדשה": CurrencyCode.TRY,
     "דינר ירדני": CurrencyCode.JOD,
+    "דירהם אמירתי": CurrencyCode.AED,
 }
 
 
