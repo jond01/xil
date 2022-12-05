@@ -87,5 +87,18 @@ def currency_from_heb_name(heb_currency_name: str) -> str:
     return currency_code_from_heb_name(heb_currency_name).value
 
 
+def optional_currency_from_heb_name(heb_currency_name: str) -> str | None:
+    """
+    Converts a Hebrew currency name to a currency string or None if not supported.
+    Prefer using this function over `currency_from_heb_name` when the currency is
+    not guaranteed to be supported.
+    """
+    try:
+        # noinspection PyTypeChecker
+        return currency_code_from_heb_name(heb_currency_name).value
+    except CurrencyNotSupportedError:
+        return None
+
+
 if __name__ == "__main__":
     print(currency_code_from_heb_name("שקל חדש"))
