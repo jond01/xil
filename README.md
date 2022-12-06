@@ -32,10 +32,10 @@ Banks that are not supported yet:
   https://www.onezerobank.com/
 
 ## Installation
-The project required Python 3.10 or above. To install the project, run:
+The project requires Python 3.10 or above. To install the project, run:
 ```shell
 pip install git+https://github.com/jond01/xil.git
 ```
 
 ## Contributing to the XIL project
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+Please read the [Contribution Guide](CONTRIBUTING.md).
