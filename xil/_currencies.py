@@ -31,6 +31,7 @@ class CurrencyCode(StrEnum):
     TRY = "TRY"  # Turkish Lira
     JOD = "JOD"  # Jordanian Dinar
     AED = "AED"  # UAE Dirham
+    EGP = "EGP"  # Egyptian Pound
 
 
 _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
@@ -68,6 +69,7 @@ _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "לירה טורקית חדשה": CurrencyCode.TRY,
     "דינר ירדני": CurrencyCode.JOD,
     "דירהם אמירתי": CurrencyCode.AED,
+    "לירה מצרית": CurrencyCode.EGP,
 }
 
 
