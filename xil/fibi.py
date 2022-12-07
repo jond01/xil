@@ -29,18 +29,26 @@ _IDX0 = pd.MultiIndex.from_product([["currency"], ["name", "amount", "official r
 _IDX1 = pd.MultiIndex.from_product([["cash", "transfer"], ["sell", "buy"]])
 _IDX = _IDX0.append(_IDX1)
 
-with get_url_response(_FIBI_URL) as response:
-    dfs = pd.read_html(
-        response,  # type: ignore[arg-type]
-        match=_MATCH,
-        header=_HEADER,
-        encoding=_ENCODING,
-        attrs=_ATTRS,
-    )
 
-df = dfs[0]  # It is guaranteed to have at least one element - otherwise an exception
-df = df[_RELEVANT_COLS]
-df.columns = _IDX
-df[("currency", "code")] = df[("currency", "name")].apply(currency_from_heb_name)
-df = df.drop(labels=("currency", "name"), axis=1)
-df = df.set_index(("currency", "code"))
+def get_fibi_df(url: str = _FIBI_URL) -> pd.DataFrame:
+    """Get FIBI exchange rates"""
+    with get_url_response(url) as response:
+        dfs = pd.read_html(
+            response,  # type: ignore[arg-type]
+            match=_MATCH,
+            header=_HEADER,
+            encoding=_ENCODING,
+            attrs=_ATTRS,
+        )
+
+    df = dfs[0]  # guaranteed to have at least one element at this point
+    df = df[_RELEVANT_COLS]
+    df.columns = _IDX
+    df[("currency", "code")] = df[("currency", "name")].apply(currency_from_heb_name)
+    df = df.drop(labels=("currency", "name"), axis=1)
+    df = df.set_index(("currency", "code"))
+    return df
+
+
+if __name__ == "__main__":
+    print(get_fibi_df())
