@@ -5,14 +5,31 @@ https://www.bankjerusalem.co.il/capital-market/rates
 """
 import pandas as pd
 
+from xil._currencies import currency_from_heb_name
+
 _JERUSALEM_URL = "https://www.bankjerusalem.co.il/capital-market/rates"
 _HEADER = None  # the table's header is not recognized
-
-df = pd.read_html(_JERUSALEM_URL, header=_HEADER)[0]
-
-idx0 = pd.MultiIndex.from_product(
+_AMOUNT_NAME_SPLITTER = "\xa0"
+_IDX0 = pd.MultiIndex.from_product(
     [["currency"], ["name", "official rate", "change (%)"]]
 )
-idx1 = pd.MultiIndex.from_product([["cash", "transfer"], ["sell", "buy"]])
-idx = idx0.append(idx1)
-df.columns = idx
+_IDX1 = pd.MultiIndex.from_product([["cash", "transfer"], ["sell", "buy"]])
+_IDX = _IDX0.append(_IDX1)
+
+
+def get_jerusalem_df(url: str = _JERUSALEM_URL) -> pd.DataFrame:
+    """Get Jerusalem Bank exchange rates"""
+    df = pd.read_html(url, header=_HEADER)[0]
+    df.columns = _IDX
+    df[("currency", "code")] = (
+        df[("currency", "name")]
+        .apply(lambda x: x.split(_AMOUNT_NAME_SPLITTER)[1])
+        .apply(currency_from_heb_name)
+    )
+    df = df.drop(labels=("currency", "name"), axis=1)
+    df = df.set_index(("currency", "code"))
+    return df
+
+
+if __name__ == "__main__":
+    print(get_jerusalem_df())

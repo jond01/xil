@@ -5,17 +5,20 @@ https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate
 
 The structure is identical Discount's, but the data is different.
 """
-# pylint: disable-next=fixme
-# TODO: avoid code duplication between this module and `discount`.
-
 import pandas as pd
+
+from xil.discount import get_discount_df
 
 _MERCANTILE_URL = "\
 https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate"
 
-df = pd.read_html(_MERCANTILE_URL, header=[0, 1])[0]
 
-idx0 = pd.MultiIndex.from_product([["currency"], ["amount", "code", "official rate"]])
-idx1 = pd.MultiIndex.from_product([["transfer", "cash"], ["buy", "sell"]])
-idx = idx0.append(idx1)
-df.columns = idx
+def get_mercantile_df(url: str = _MERCANTILE_URL) -> pd.DataFrame:
+    """Get Mercantile Bank exchange rates"""
+    # The structure is identical Discount's, but the data is different - use Discount's
+    # function
+    return get_discount_df(url)
+
+
+if __name__ == "__main__":
+    print(get_mercantile_df())
