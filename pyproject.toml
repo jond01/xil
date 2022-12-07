@@ -63,6 +63,15 @@ show_error_codes = true
 filterwarnings = ["error"]
 addopts = ["--import-mode=importlib"]
 
+[tool.coverage.run]
+branch = true
+source = ["xil"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_empty = true
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
