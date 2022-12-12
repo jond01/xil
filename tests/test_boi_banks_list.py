@@ -15,14 +15,14 @@ KNOWN_BANKS_SET = {
     "Bank Hapoalim B.M",
     "Bank Leumi Le-Israel B.M",
     "Bank Massad Ltd",
-    "Bank Yahav  for Government Employees Ltd",
     "Bank of Jerusalem Ltd",
     "Israel Discount Bank Ltd",
     "Mercantile Discount Bank ltd",
     "Mizrahi Tefahot Bank Ltd",
-    "One Zero Digital Bank LTD",
     "The First International Bank of Israel Ltd",
-    "Union Bank of Israel Ltd",
+    "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
+    "One Zero Digital Bank LTD",  # Not supported - no public data
+    "Union Bank of Israel Ltd",  # A part of Mizrahi Tefahot Bank now
 }
 
 
