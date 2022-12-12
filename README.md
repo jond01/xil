@@ -17,7 +17,6 @@ commercial Israeli banks. The XIL project supports the following banks:
 | Israel Discount Bank               | `discount`        | :x:   | בנק דיסקונט לישראל           |
 | First International Bank of Israel | `fibi`            | :x:   | הבנק הבינלאומי הראשון לישראל |
 | Bank of Jerusalem                  | `jerusalem`       | :x:   | בנק ירושלים                  |
-| Union Bank of Israel               | `union`           | :x:   | בנק איגוד לישראל             |
 | Mercantile Discount Bank           | `mercantile`      | :x:   | בנק מרכנתיל דיסקונט          |
 | Bank Massad                        | `massad`          | :x:   | בנק מסד                      |
 
