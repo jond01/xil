@@ -36,6 +36,9 @@ def fixture_boi_banks_set() -> set[str]:
     return set(df[df["Category"] == "COMMERCIAL BANKS"]["Name"])
 
 
+@pytest.mark.skip(
+    reason="The BOI website has changed, see https://github.com/jond01/xil/issues/17"
+)
 def test_boi_banks(boi_banks_set: set[str]) -> None:
     """Test the online set vs. the hard-coded one"""
     assert (
