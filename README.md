@@ -6,8 +6,7 @@ banks.
 
 ## Banks data
 
-The Bank of Israel [lists](https://www.boi.org.il/en/BankingSupervision/BanksAndBranchLocations/Pages/Default.aspx)
-commercial Israeli banks. The XIL project supports the following banks:
+The XIL project supports the following banks:
 
 | Bank and data source                                                                                                            | XIL module        | Tests | Bank name (Hebrew)           |
 |---------------------------------------------------------------------------------------------------------------------------------|-------------------|-------|------------------------------|
