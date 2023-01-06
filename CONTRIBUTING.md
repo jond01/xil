@@ -44,7 +44,7 @@ installed. You can use [pyenv](https://github.com/pyenv/pyenv) to manage multipl
 Python versions.
 
 To reproduce the exact Python environment used in this project, install
-[Poetry](https://python-poetry.org/) (version 1.2.2+) and run:
+[Poetry](https://python-poetry.org/) (version 1.3.1+) and run:
 ```shell
 poetry install
 ```
