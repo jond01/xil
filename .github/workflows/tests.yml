@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - "releases/**"
+  pull_request:
+    branches:
+      - main
+      - "releases/**"
+  workflow_dispatch:
+#  TODO: Add cron job to run tests on a regular basis
+#  schedule:
+#    - cron: "0 0 * * *"
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.10"]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Poetry
+      run: pipx install poetry==1.3.1
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: poetry
+    - name: Install dependencies
+      run: poetry install --only main,test
+    - name: Run tests
+      run: poetry run coverage run -m pytest
+    - name: Report coverage
+      run: poetry run coverage report
