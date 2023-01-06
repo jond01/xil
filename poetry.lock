@@ -143,6 +143,9 @@ files = [
     {file = "coverage-6.5.0.tar.gz", hash = "sha256:f642e90754ee3e06b0e7e51bce3379590e76b7f76b708e1a71ff043f87025c84"},
 ]
 
+[package.dependencies]
+tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.11.0a6\" and extra == \"toml\""}
+
 [package.extras]
 toml = ["tomli"]
 
@@ -993,4 +996,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">= 3.10, < 3.12"
-content-hash = "b82e86428ac94d771b0bf4b5383cf41f8b69040a256e5522cc718173ea99dde4"
+content-hash = "1561964f74c968ecb3d9c83a9425d85f1557c64b1376a68be618d395501325e2"

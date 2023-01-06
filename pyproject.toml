@@ -39,7 +39,7 @@ pandas-stubs = "^1.5.2.230105"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.0"
-coverage = "^6.5.0"
+coverage = {extras = ["toml"], version = "^6.5.0"}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
@@ -62,6 +62,15 @@ show_error_codes = true
 [tool.pytest.ini_options]
 filterwarnings = ["error"]
 addopts = ["--import-mode=importlib"]
+
+[tool.coverage.run]
+branch = true
+source = ["xil"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_empty = true
 
 [build-system]
 requires = ["poetry-core"]
