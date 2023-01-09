@@ -1,13 +1,15 @@
 """
 Utilities for currency conversion and standardization.
 """
+import sys
 from enum import Enum
 
+if sys.version_info >= (3, 11):
+    from enum import StrEnum
+else:
 
-class StrEnum(str, Enum):
-    """String enum"""
-
-    # This is built into Python 3.11
+    class StrEnum(str, Enum):
+        """String enum"""
 
 
 class CurrencyCode(StrEnum):
