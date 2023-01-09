@@ -5,7 +5,7 @@ import sys
 from enum import Enum
 
 if sys.version_info >= (3, 11):
-    from enum import StrEnum
+    from enum import StrEnum  # pragma: no cover
 else:
 
     class StrEnum(str, Enum):
@@ -106,7 +106,3 @@ def optional_currency_from_heb_name(heb_currency_name: str) -> str | None:
         return currency_code_from_heb_name(heb_currency_name).value
     except CurrencyNotSupportedError:
         return None
-
-
-if __name__ == "__main__":
-    print(currency_code_from_heb_name("שקל חדש"))
