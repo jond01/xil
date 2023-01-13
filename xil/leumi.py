@@ -50,8 +50,7 @@ def get_leumi_df(url: str = _LEUMI_URL) -> pd.DataFrame:
         ]
     ]
     df.columns = _IDX
-    # The next line is correct type-wise, wrong stubs
-    df = df.loc[df[("currency", "name")] != "סל המטבעות", :]  # type: ignore[index]
+    df = df.loc[df[("currency", "name")] != "סל המטבעות", :]
     # fix " in "דולר ארה&quot;ב" (defined on a separate line with a type hint for mypy)
     name_norm: Callable[[str], str] = lambda x: x.replace("&quot;", '"')
     df[("currency", "code")] = (
