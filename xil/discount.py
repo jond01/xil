@@ -3,7 +3,11 @@ Discount bank
 
 https://www.discountbank.co.il/DB/private/general-information/foreign-currency-transfers/exchange-rates
 """
+from typing import Callable
+
 import pandas as pd
+
+from xil._df_normalizer import BaseDataFrameNormalizer
 
 _DISCOUNT_URL = "\
 https://www.discountbank.co.il/DB/private/general-information/foreign-currency-transfers/exchange-rates"
@@ -17,8 +21,9 @@ def get_discount_df(url: str = _DISCOUNT_URL) -> pd.DataFrame:
     df = pd.read_html(url, header=[0, 1])[0]
     df.columns = _DISCOUNT_IDX
     amount_key = ("currency", "amount")
-    df[amount_key] = df[amount_key].apply(lambda x: x.split(" ")[0])
-    df = df.set_index(("currency", "code"))
+    amount_fixer: Callable[[str], str] = lambda x: x.split(" ")[0]
+    df[amount_key] = df[amount_key].apply(amount_fixer)
+    df = BaseDataFrameNormalizer(df).norm()
     return df
 
 

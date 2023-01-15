@@ -5,7 +5,7 @@ https://www.bankjerusalem.co.il/capital-market/rates
 """
 import pandas as pd
 
-from xil._currencies import currency_from_heb_name
+from xil._df_normalizer import DataFrameNormalizer
 
 _JERUSALEM_URL = "https://www.bankjerusalem.co.il/capital-market/rates"
 _HEADER = None  # the table's header is not recognized
@@ -17,17 +17,23 @@ _IDX1 = pd.MultiIndex.from_product([["cash", "transfer"], ["sell", "buy"]])
 _IDX = _IDX0.append(_IDX1)
 
 
+class JerusalemNormalizer(DataFrameNormalizer):
+    """DataFrame normalizer for Jerusalem bank data"""
+
+    @staticmethod
+    def _fix_amount(raw_amount: str) -> str:
+        return raw_amount.split(_AMOUNT_NAME_SPLITTER)[1]
+
+    @classmethod
+    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
+        return names.apply(cls._fix_amount)
+
+
 def get_jerusalem_df(url: str = _JERUSALEM_URL) -> pd.DataFrame:
     """Get Jerusalem Bank exchange rates"""
     df = pd.read_html(url, header=_HEADER)[0]
     df.columns = _IDX
-    df[("currency", "code")] = (
-        df[("currency", "name")]
-        .apply(lambda x: x.split(_AMOUNT_NAME_SPLITTER)[1])
-        .apply(currency_from_heb_name)
-    )
-    df = df.drop(labels=("currency", "name"), axis=1)
-    df = df.set_index(("currency", "code"))
+    df = JerusalemNormalizer(df).norm()
     return df
 
 

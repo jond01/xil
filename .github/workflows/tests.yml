@@ -40,5 +40,6 @@ jobs:
       - name: Maintain 100% coverage on tested modules
         run: |
           poetry run coverage report --fail-under 100 \
-            xil/_currencies.py \
-            xil/_headers.py \
+          xil/_currencies.py \
+          xil/_headers.py \
+          xil/_df_normalizer.py \

@@ -8,7 +8,7 @@ https://apps.fibi.co.il/Matach/matach.aspx
 """
 import pandas as pd
 
-from xil._currencies import currency_from_heb_name
+from xil._df_normalizer import DataFrameNormalizer
 from xil._headers import get_url_response
 
 _FIBI_URL = "http://apps.fibi.co.il/Matach/matach.aspx"
@@ -44,9 +44,7 @@ def get_fibi_df(url: str = _FIBI_URL) -> pd.DataFrame:
     df = dfs[0]  # guaranteed to have at least one element at this point
     df = df[_RELEVANT_COLS]
     df.columns = _IDX
-    df[("currency", "code")] = df[("currency", "name")].apply(currency_from_heb_name)
-    df = df.drop(labels=("currency", "name"), axis=1)
-    df = df.set_index(("currency", "code"))
+    df = DataFrameNormalizer(df).norm()
     return df
 
 

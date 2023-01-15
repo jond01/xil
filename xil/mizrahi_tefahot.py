@@ -6,7 +6,7 @@ https://www.mizrahi-tefahot.co.il/brokerage/currancyexchange/
 """
 import pandas as pd
 
-from xil._currencies import currency_from_heb_name
+from xil._df_normalizer import DataFrameNormalizer
 
 _MIZRAHI_TEFAHOT_URL = "https://www.mizrahi-tefahot.co.il/brokerage/foreignexchange/"
 _IDX0 = pd.MultiIndex.from_product([["currency"], ["name", "amount", "official rate"]])
@@ -18,9 +18,7 @@ def get_mizrahi_teafhot_df(url: str = _MIZRAHI_TEFAHOT_URL) -> pd.DataFrame:
     """Get Mizrahi Tefahot Bank exchange rates"""
     df = pd.read_html(url, header=0)[0]
     df.columns = _MIZRAHI_TEFAHOT_IDX
-    df[("currency", "code")] = df[("currency", "name")].apply(currency_from_heb_name)
-    df = df.drop(labels=("currency", "name"), axis=1)
-    df = df.set_index(("currency", "code"))
+    df = DataFrameNormalizer(df).norm()
     return df
 
 
