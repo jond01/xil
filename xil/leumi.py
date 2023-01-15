@@ -16,11 +16,9 @@ https://www.bankleumi.co.il/vgnprod/ltrade_new_shaar_muskamim_multilang_vgn_HE.h
 
 Looks like the business data is identical to the private data.
 """
-from typing import Callable
-
 import pandas as pd
 
-from xil._currencies import currency_from_heb_name
+from xil._df_normalizer import JPYNormalizer
 from xil._headers import UA_HEADER
 
 _LEUMI_URL = "\
@@ -30,6 +28,22 @@ _IDX0 = pd.MultiIndex.from_product(
 )
 _IDX1 = pd.MultiIndex.from_product([["transfer", "cash"], ["buy", "sell"]])
 _IDX = _IDX0.append(_IDX1)
+
+
+class LeumiNormalizer(JPYNormalizer):
+    """Leumi bank data normalizer"""
+
+    _QUOT = "&quot;"
+
+    @classmethod
+    def _fix_quot(cls, raw_name: str) -> str:
+        """fix " in 'דולר ארה&quot;ב'"""
+        return raw_name.replace(cls._QUOT, '"')
+
+    @classmethod
+    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
+        names = super()._preprocess_names(names)
+        return names.apply(cls._fix_quot)
 
 
 def get_leumi_df(url: str = _LEUMI_URL) -> pd.DataFrame:
@@ -51,16 +65,7 @@ def get_leumi_df(url: str = _LEUMI_URL) -> pd.DataFrame:
     ]
     df.columns = _IDX
     df = df.loc[df[("currency", "name")] != "סל המטבעות", :]
-    # fix " in "דולר ארה&quot;ב" (defined on a separate line with a type hint for mypy)
-    name_norm: Callable[[str], str] = lambda x: x.replace("&quot;", '"')
-    df[("currency", "code")] = (
-        df[("currency", "name")]
-        .apply(lambda x: x.strip("100 "))  # remove "100" from "100 ין יפני"
-        .apply(name_norm)
-        .apply(currency_from_heb_name)
-    )
-    df = df.set_index(("currency", "code"))
-    df = df.drop(labels=("currency", "name"), axis=1)
+    df = LeumiNormalizer(df).norm()
     return df
 
 
