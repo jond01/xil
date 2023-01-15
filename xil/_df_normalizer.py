@@ -54,8 +54,8 @@ class DataFrameNormalizer(BaseDataFrameNormalizer):
             self.df[_CURRENCY_NAME_KEY]
         ).apply(currency_from_heb_name)
 
-    @staticmethod
-    def _preprocess_names(names: pd.Series) -> pd.Series:
+    @classmethod
+    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
         """
         A preprocessing hook to manipulate the names before passing them to the
         currency_from_heb_name function.
