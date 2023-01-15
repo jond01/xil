@@ -68,3 +68,27 @@ class DataFrameNormalizer(BaseDataFrameNormalizer):
     def drop_currency_name(self) -> None:
         """Drop the ("currency", "name") column from the df"""
         self.df.drop(labels=_CURRENCY_NAME_KEY, axis=self._COLS_AXIS, inplace=True)
+
+
+class JPYNormalizer(DataFrameNormalizer):
+    """
+    Normalizer subclass for fixing JPY amount in the name.
+    Used in Poalim and Leumi banks.
+    """
+
+    _JPY_AMOUNT = "100"
+
+    @classmethod
+    def _remove_100(cls, raw_name: str) -> str:
+        """
+        remove '100' from '100 ין יפני', prefix or suffix.
+        Note: this method does not check the currency name.
+        """
+        return (
+            raw_name.removeprefix(cls._JPY_AMOUNT).removesuffix(cls._JPY_AMOUNT).strip()
+        )
+
+    @classmethod
+    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
+        names = super()._preprocess_names(names)
+        return names.apply(cls._remove_100)

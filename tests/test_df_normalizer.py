@@ -14,6 +14,7 @@ from xil._df_normalizer import (
     _CURRENCY_NAME_KEY,
     BaseDataFrameNormalizer,
     DataFrameNormalizer,
+    JPYNormalizer,
 )
 
 
@@ -84,3 +85,45 @@ class TestNormalizer:
             df_normalizer.norm()
             for mock in [mock_add_code, mock_set_index, mock_drop_name]:
                 mock.assert_called_once_with(df_normalizer)
+
+
+class TestJPYNormalizer:
+    @staticmethod
+    @pytest.fixture(name="jpy_df")
+    def fixture_jpy_df() -> pd.DataFrame:
+        return pd.DataFrame(
+            [['דולר ארה"ב', 3.41], ["100 ין יפני", 2.65]],
+            columns=[_CURRENCY_NAME_KEY, ("transfer", "sell")],
+        )
+
+    @staticmethod
+    @pytest.fixture(name="normed_jpy_df")
+    def fixture_normed_jpy_df() -> pd.DataFrame:
+        return pd.DataFrame(
+            [[3.41], [2.65]],
+            columns=[("transfer", "sell")],
+            index=pd.Index(["USD", "JPY"], name=_CURRENCY_CODE_KEY),
+        )
+
+    @staticmethod
+    @pytest.mark.parametrize(
+        ("raw_name", "normed_name"),
+        [
+            ("100 ין יפני", "ין יפני"),
+            ("ין יפני 100", "ין יפני"),
+            (" ין יפני 100 ", "ין יפני 100"),
+            ("דולר", "דולר"),
+            ("1 דולר", "1 דולר"),
+            (" 100 דולר", "100 דולר"),
+            ("100 דולר", "דולר"),
+        ],
+    )
+    def test_remove_100(raw_name: str, normed_name: str) -> None:
+        # pylint: disable=protected-access
+        assert JPYNormalizer._remove_100(raw_name) == normed_name
+
+    @staticmethod
+    def test_norm(jpy_df: pd.DataFrame, normed_jpy_df: pd.DataFrame) -> None:
+        assert (
+            JPYNormalizer(jpy_df).norm().equals(normed_jpy_df)
+        ), "The normalized `jpy_df` is different than expected"
