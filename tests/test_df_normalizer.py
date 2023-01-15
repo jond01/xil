@@ -3,7 +3,6 @@ Test the _df_normalizer module.
 """
 # pylint: disable=missing-function-docstring
 from contextlib import AbstractContextManager
-from itertools import product
 from unittest.mock import Mock, patch
 
 import pandas as pd
@@ -13,6 +12,7 @@ from xil._df_normalizer import (
     _CURRENCY_CODE_KEY,
     _CURRENCY_KEY,
     _CURRENCY_NAME_KEY,
+    BaseDataFrameNormalizer,
     DataFrameNormalizer,
 )
 
@@ -43,7 +43,7 @@ def test_drop_name(currencies_df: pd.DataFrame) -> None:
 
 
 def test_set_index(currencies_df_with_code: pd.DataFrame) -> None:
-    DataFrameNormalizer(currencies_df_with_code).set_code_index()
+    BaseDataFrameNormalizer(currencies_df_with_code).set_code_index()
     assert currencies_df_with_code.index.name == _CURRENCY_CODE_KEY
 
 
@@ -60,28 +60,20 @@ def test_preprocess_names(currencies_df: pd.DataFrame) -> None:
         mock.assert_called_once_with(names)
 
 
-@pytest.mark.parametrize(
-    ("add_code", "set_code", "drop_name"), product([True, False], repeat=3)
-)
-def test_norm(
-    currencies_df: pd.DataFrame,
-    add_code: bool,
-    set_code: bool,
-    drop_name: bool,
-) -> None:
+def test_base_norm(currencies_df: pd.DataFrame) -> None:
+    df_normalizer = BaseDataFrameNormalizer(currencies_df)
+    with patch.object(BaseDataFrameNormalizer, "set_code_index", autospec=True) as mock:
+        df_normalizer.norm()
+        mock.assert_called_once_with(df_normalizer)
+
+
+def test_norm(currencies_df: pd.DataFrame) -> None:
     df_normalizer = DataFrameNormalizer(currencies_df)
     with (
         _patch_normalizer_attr("add_code_from_name") as mock_add_code,
         _patch_normalizer_attr("set_code_index") as mock_set_index,
         _patch_normalizer_attr("drop_currency_name") as mock_drop_name,
     ):
-        df_normalizer.norm(add_code=add_code, set_code=set_code, drop_name=drop_name)
-        for (param, mock) in [
-            (add_code, mock_add_code),
-            (set_code, mock_set_index),
-            (drop_name, mock_drop_name),
-        ]:
-            if param:
-                mock.assert_called_once_with(df_normalizer)
-            else:
-                mock.assert_not_called()
+        df_normalizer.norm()
+        for mock in [mock_add_code, mock_set_index, mock_drop_name]:
+            mock.assert_called_once_with(df_normalizer)

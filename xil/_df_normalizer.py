@@ -15,29 +15,38 @@ _CURRENCY_CODE_KEY = (_CURRENCY_KEY, "code")
 _CURRENCY_NAME_KEY = _IDX0[0]
 
 
-class DataFrameNormalizer:
-    """This class is used to normalize currencies data frames of all the banks"""
-
-    _COLS_AXIS = "columns"
+class BaseDataFrameNormalizer:
+    """Base class that can be used when the df has a ("currency", "code") column"""
 
     def __init__(self, df: pd.DataFrame):
         """Initialize a DataFrame (df) normalizer with a raw currencies df"""
         self.df = df
 
-    def norm(
-        self,
-        add_code: bool = True,
-        set_code: bool = True,
-        drop_name: bool = True,
-    ) -> pd.DataFrame:
-        """Normalize the df inplace according to the given parameters and return it"""
-        if add_code:
-            self.add_code_from_name()
-        if set_code:
-            self.set_code_index()
-        if drop_name:
-            self.drop_currency_name()
+    def norm(self) -> pd.DataFrame:
+        """
+        Normalize the df inplace and return it - set the currency code as the index.
+        """
+        self.set_code_index()
         return self.df
+
+    def set_code_index(self) -> None:
+        """Set the ("currency", "code") as the df index"""
+        self.df.set_index(_CURRENCY_CODE_KEY, inplace=True)
+
+
+class DataFrameNormalizer(BaseDataFrameNormalizer):
+    """
+    This class is used to normalize currencies data frames of with a
+    ("currency", "name") column.
+    """
+
+    _COLS_AXIS = "columns"
+
+    def norm(self) -> pd.DataFrame:
+        """Normalize the df inplace according to the given parameters and return it"""
+        self.add_code_from_name()
+        self.drop_currency_name()
+        return super().norm()
 
     def add_code_from_name(self) -> None:
         """Add a ("currency", "code") column from the ("currency", "name") column"""
@@ -52,10 +61,6 @@ class DataFrameNormalizer:
         currency_from_heb_name function.
         """
         return names
-
-    def set_code_index(self) -> None:
-        """Set the ("currency", "code") as the df index"""
-        self.df.set_index(_CURRENCY_CODE_KEY, inplace=True)
 
     def drop_currency_name(self) -> None:
         """Drop the ("currency", "name") column from the df"""
