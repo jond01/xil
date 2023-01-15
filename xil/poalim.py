@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from xil._currencies import currency_from_heb_name
+from xil._df_normalizer import JPYNormalizer
 
 IL_TZ = ZoneInfo("Israel")
 _POALIM_GET_URL = "https://www.bankhapoalim.co.il/he/coin-rates"
@@ -57,13 +57,7 @@ def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
 
     df = df[_RELEVANT_COLS]
     df.columns = _IDX
-    df[("currency", "code")] = (
-        df[("currency", "name")]
-        .apply(lambda x: x.strip("100 "))  # remove "100" from "100 ין יפני"
-        .apply(currency_from_heb_name)
-    )
-    df = df.set_index(("currency", "code"))
-    df = df.drop(labels=("currency", "name"), axis=1)
+    df = JPYNormalizer(df).norm()
     return df
 
 
