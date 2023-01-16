@@ -2,13 +2,14 @@
 Test the _headers module.
 """
 
+import ssl
 from typing import Generator
 from unittest.mock import Mock, patch
 from urllib.request import Request
 
 import pytest
 
-from xil._headers import UA_HEADER, get_url_response
+from xil._headers import _DEFAULT_CONTEXT, UA_HEADER, get_url_response
 
 
 @pytest.fixture(name="url")
@@ -37,13 +38,13 @@ def _compare_requests(request1: Request, request2: Request) -> bool:
 @pytest.mark.parametrize(
     ("default_headers", "expected_headers"), [(False, {}), (True, UA_HEADER)]
 )
-def test_get_url_response(
+def test_get_url_response_headers(
     url: str,
     default_headers: bool,
     expected_headers: dict[str, str],
     mock_urlopen: Mock,
 ) -> None:
-    """Test the get_url_response function"""
+    """Test the get_url_response request headers"""
     get_url_response(url, default_headers)
     mock_urlopen.assert_called_once()
     actual_request = mock_urlopen.call_args.args[0]
@@ -51,3 +52,22 @@ def test_get_url_response(
     assert _compare_requests(
         actual_request, expected_request
     ), "The actual request is different than expected"
+
+
+@pytest.mark.parametrize("default_headers", [False, True])
+@pytest.mark.parametrize(
+    ("set_context", "expected_context"), [(False, None), (True, _DEFAULT_CONTEXT)]
+)
+def test_get_url_response_context(
+    url: str,
+    default_headers: bool,
+    set_context: bool,
+    expected_context: ssl.SSLContext | None,
+    mock_urlopen: Mock,
+) -> None:
+    """Test that get_url_response sets an SSL context when it is asked to"""
+    get_url_response(url, default_headers=default_headers, set_context=set_context)
+    mock_urlopen.assert_called_once()
+    assert mock_urlopen.call_args.kwargs == dict(
+        context=expected_context
+    ), "The context passed to urlopen is different than expected"
