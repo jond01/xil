@@ -2,11 +2,10 @@
 Test the known list of banks against the Bank of Israel (BOI) online list
 """
 
-import ssl
-import urllib.request
-
 import pandas as pd
 import pytest
+
+from xil.boi import get_boi_url_response
 
 BOI_XML_URL = "\
 https://www.boi.org.il/en/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/banking_corporations_en.xml"
@@ -29,9 +28,7 @@ KNOWN_BANKS_SET = {
 @pytest.fixture(name="boi_banks_set")
 def fixture_boi_banks_set() -> set[str]:
     """Get the set on Israeli banks from BOI online XML"""
-    ctx = ssl.create_default_context()
-    ctx.set_ciphers("DEFAULT")
-    with urllib.request.urlopen(BOI_XML_URL, context=ctx) as response:
+    with get_boi_url_response(BOI_XML_URL) as response:
         df = pd.read_xml(response)
     return set(df[df["Category"] == "COMMERCIAL BANKS"]["Name"])
 
