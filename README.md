@@ -18,7 +18,7 @@ The XIL project supports the following banks:
 | [Bank of Jerusalem](https://www.bankjerusalem.co.il/capital-market/rates)                                                                                  | `jerusalem`       | :x:   | בנק ירושלים                  |
 | [Mercantile Discount Bank](https://www.mercantile.co.il/MB/private/foregin-currency/exchange-rate)                                                         | `mercantile`      | :x:   | בנק מרכנתיל דיסקונט          |
 | [Bank Massad](https://www.bankmassad.co.il/wps/portal/FibiMenu/Marketing/Private/ForeignCurrency/ForexOnline/Rates)                                        | `massad`          | :x:   | בנק מסד                      |
-| [Bank Of Israel](https://www.boi.org.il/roles/markets/%D7%A9%D7%A2%D7%A8%D7%99-%D7%97%D7%9C%D7%99%D7%A4%D7%99%D7%9F-%D7%99%D7%A6%D7%99%D7%92%D7%99%D7%9D/) | `boi`             | :x:   | בנק ישראל                    |
+| [Bank of Israel](https://www.boi.org.il/roles/markets/%D7%A9%D7%A2%D7%A8%D7%99-%D7%97%D7%9C%D7%99%D7%A4%D7%99%D7%9F-%D7%99%D7%A6%D7%99%D7%92%D7%99%D7%9D/) | `boi`             | :x:   | בנק ישראל                    |
 
 For the data sources (websites and URLs) for each bank, see the docstring of the
 corresponding XIL module.
