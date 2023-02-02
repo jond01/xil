@@ -8,7 +8,7 @@ import pytest
 from xil.boi import get_boi_url_response
 
 BOI_XML_URL = "\
-https://www.boi.org.il/en/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/banking_corporations_en.xml"
+https://www.boi.org.il/boi_files/Pikuah/banking_corporations_en.xml"
 
 KNOWN_BANKS_SET = {
     "Bank Hapoalim B.M",
@@ -21,7 +21,6 @@ KNOWN_BANKS_SET = {
     "The First International Bank of Israel Ltd",
     "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
     "One Zero Digital Bank LTD",  # Not supported - no public data
-    "Union Bank of Israel Ltd",  # A part of Mizrahi Tefahot Bank now
 }
 
 
@@ -33,9 +32,6 @@ def fixture_boi_banks_set() -> set[str]:
     return set(df[df["Category"] == "COMMERCIAL BANKS"]["Name"])
 
 
-@pytest.mark.skip(
-    reason="The BOI website has changed, see https://github.com/jond01/xil/issues/17"
-)
 def test_boi_banks(boi_banks_set: set[str]) -> None:
     """Test the online set vs. the hard-coded one"""
     assert (
