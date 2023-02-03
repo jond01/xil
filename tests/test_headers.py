@@ -68,6 +68,6 @@ def test_get_url_response_context(
     """Test that get_url_response sets an SSL context when it is asked to"""
     get_url_response(url, default_headers=default_headers, set_context=set_context)
     mock_urlopen.assert_called_once()
-    assert mock_urlopen.call_args.kwargs == dict(
-        context=expected_context
-    ), "The context passed to urlopen is different than expected"
+    assert mock_urlopen.call_args.kwargs == {
+        "context": expected_context,
+    }, "The context passed to urlopen is different than expected"
