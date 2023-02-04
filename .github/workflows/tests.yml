@@ -17,6 +17,8 @@ on:
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    env:
+      PRE_COMMIT_HOME: /opt/.cache/pre-commit
     steps:
       - uses: actions/checkout@v3
       - name: Install Poetry
@@ -25,9 +27,21 @@ jobs:
         with:
           python-version: "3.10"
           cache: poetry
+          cache-dependency-path: |
+            poetry.lock
+            .github/workflows/env-markers/poetry-install.txt
       - name: Install dependencies
         run: poetry install
+      - name: Set PY
+        id: set-py
+        run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.PRE_COMMIT_HOME }}
+          key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit
+        env:
+          PRE_COMMIT_COLOR: always
         run: poetry run pre-commit run --all-files
 
   tests:
@@ -47,7 +61,7 @@ jobs:
           cache: poetry
           cache-dependency-path: |
             poetry.lock
-            .github/workflows/env-markers/poetry-main-test.txt
+            .github/workflows/env-markers/poetry-install-only-main-test.txt
       - name: Install dependencies
         run: poetry install --only main,test
       - name: Run tests
