@@ -15,6 +15,21 @@ on:
 #    - cron: "0 0 * * *"
 
 jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: poetry
+      - name: Install dependencies
+        run: poetry install
+      - name: Run pre-commit
+        run: poetry run pre-commit run --all-files
+
   tests:
     strategy:
       fail-fast: false
@@ -30,6 +45,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: poetry
+          cache-dependency-path: |
+            poetry.lock
+            .github/workflows/env-markers/poetry-main-test.txt
       - name: Install dependencies
         run: poetry install --only main,test
       - name: Run tests
