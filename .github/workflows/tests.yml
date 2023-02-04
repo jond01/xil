@@ -30,6 +30,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: poetry
+          cache-dependency-path: |
+            poetry.lock
+            .github/workflows/env-markers/poetry-main-test.txt
       - name: Install dependencies
         run: poetry install --only main,test
       - name: Run tests
