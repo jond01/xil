@@ -27,7 +27,9 @@ jobs:
         with:
           python-version: "3.10"
           cache: poetry
-          cache-dependency-path: poetry.lock
+          cache-dependency-path: |
+            poetry.lock
+            .github/workflows/env-markers/poetry-install.txt
       - name: Install dependencies
         run: poetry install
       - name: Set PY
@@ -57,7 +59,7 @@ jobs:
           cache: poetry
           cache-dependency-path: |
             poetry.lock
-            .github/workflows/env-markers/poetry-main-test.txt
+            .github/workflows/env-markers/poetry-install-only-main-test.txt
       - name: Install dependencies
         run: poetry install --only main,test
       - name: Run tests
