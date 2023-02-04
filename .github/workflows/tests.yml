@@ -65,6 +65,8 @@ jobs:
       - name: Install dependencies
         run: poetry install --only main,test
       - name: Run tests
+        env:
+          PY_COLORS: 1
         run: poetry run coverage run -m pytest
       - name: Report coverage
         run: poetry run coverage report
