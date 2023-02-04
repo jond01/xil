@@ -40,6 +40,8 @@ jobs:
           path: ${{ env.PRE_COMMIT_HOME }}
           key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit
+        env:
+          PRE_COMMIT_COLOR: always
         run: poetry run pre-commit run --all-files
 
   tests:
