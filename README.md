@@ -1,4 +1,5 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![Tests](https://github.com/jond01/xil/actions/workflows/tests.yml/badge.svg)](https://github.com/jond01/xil/actions/workflows/tests.yml)
 
 # XIL
 
