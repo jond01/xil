@@ -35,7 +35,7 @@ pylint = "^2.16.1"
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
-pandas-stubs = "^1.5.2.230105"
+pandas-stubs = "^1.5.3.230203"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.1"
