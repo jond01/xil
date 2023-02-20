@@ -34,7 +34,7 @@ pre-commit = "^3.0.4"
 pylint = "^2.16.2"
 
 [tool.poetry.group.typing.dependencies]
-mypy = "^1.0.0"
+mypy = "^1.0.1"
 pandas-stubs = "^1.5.3.230214"
 
 [tool.poetry.group.test.dependencies]
