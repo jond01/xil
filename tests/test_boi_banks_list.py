@@ -21,7 +21,6 @@ KNOWN_BANKS_SET = {
     "The First International Bank of Israel Ltd",
     "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
     "One Zero Digital Bank LTD",  # Not supported - no public data
-    "CARDCOM ACQUIRING LTD",  # Not really a bank - https://www.cardcom.solutions/
 }
 
 
