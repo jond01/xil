@@ -43,8 +43,6 @@ class DataFrameNormalizer(BaseDataFrameNormalizer):
     ("currency", "name") column.
     """
 
-    _COLS_AXIS = "columns"
-
     def norm(self) -> pd.DataFrame:
         """Normalize the df inplace according to the given parameters and return it"""
         self.add_code_from_name()
@@ -67,7 +65,7 @@ class DataFrameNormalizer(BaseDataFrameNormalizer):
 
     def drop_currency_name(self) -> None:
         """Drop the ("currency", "name") column from the df"""
-        self.df.drop(labels=_CURRENCY_NAME_KEY, axis=self._COLS_AXIS, inplace=True)
+        self.df.drop(labels=_CURRENCY_NAME_KEY, axis="columns", inplace=True)
 
 
 class JPYNormalizer(DataFrameNormalizer):
