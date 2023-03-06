@@ -38,7 +38,7 @@ mypy = "^1.0.0"
 pandas-stubs = "^1.5.3.230227"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.2.1"
+pytest = "^7.2.2"
 coverage = {extras = ["toml"], version = "^7.2.1"}
 
 [tool.poetry.urls]
