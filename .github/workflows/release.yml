@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_pypi:
+        description: True to publish to Test PyPI instead of PyPI
+        default: false
+        required: false
+        type: boolean
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+      - name: Build and publish the package
+        if: ${{ !inputs.test_pypi }}
+        run: poetry publish --build
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
