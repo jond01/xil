@@ -39,10 +39,19 @@ git clone https://github.com/jond01/xil.git
 ```
 
 ### Python environment
-This project uses Python 3.10 and above, make sure you have at least Python 3.10
+#### Python version
+This package supports specific versions of Python, with the minimal version specified in
+the [`.python-version` file](.python-version). Make sure you have at least this version
 installed. You can use [pyenv](https://github.com/pyenv/pyenv) to manage multiple
 Python versions.
 
+If you use pyenv, install the specified Python version by running:
+```shell
+pyenv install
+```
+From the root of the project.
+
+#### Virtual environment
 To reproduce the exact Python environment used in this project, install
 [Poetry](https://python-poetry.org/) (version specified in the
 [constraint file](.github/workflows/poetry-constraint.txt)) and run:
@@ -77,4 +86,5 @@ To run the tests, run:
 ```shell
 poetry run pytest
 ```
-They should all pass. Make sure you run the tests before committing your code.
+Or simply `pytest` if you are in the activated virtual environment.
+All the tests should pass. Make sure you run the tests before committing your code.
