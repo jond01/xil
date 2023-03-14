@@ -19,9 +19,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+      - name: Configure test PyPI repository
+        if: inputs.repository == 'test-pypi'
+        run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
       - name: Build and publish the package
         run: poetry publish --build --repository ${{ inputs.repository }}
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
-          POETRY_REPOSITORIES_TEST_PYPI: https://test.pypi.org/legacy/
           POETRY_PYPI_TOKEN_TEST_PYPI: ${{ secrets.TEST_PYPI_TOKEN }}
