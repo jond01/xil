@@ -34,4 +34,6 @@ def get_url_response(
     else:
         context = None
     request = urllib.request.Request(url, headers=headers)
-    return urllib.request.urlopen(request, context=context)  # type: ignore[no-any-return]
+    return urllib.request.urlopen(  # type: ignore[no-any-return]
+        request, context=context
+    )

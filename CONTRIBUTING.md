@@ -77,7 +77,7 @@ sure it complies with the project's standards. The hooks include the following
 checks:
 - `black`: code formatting
 - `mypy`: type checking
-- `pylint`: code quality
+- `pylint` and `ruff`: code quality
 
 The full list of hooks can be found in the `.pre-commit-config.yaml` file.
 

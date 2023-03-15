@@ -3,7 +3,6 @@ Discount bank
 
 https://www.discountbank.co.il/DB/private/general-information/foreign-currency-transfers/exchange-rates
 """
-from typing import Callable
 
 import pandas as pd
 
@@ -21,7 +20,10 @@ def get_discount_df(url: str = _DISCOUNT_URL) -> pd.DataFrame:
     df = pd.read_html(url, header=[0, 1])[0]
     df.columns = _DISCOUNT_IDX
     amount_key = ("currency", "amount")
-    amount_fixer: Callable[[str], str] = lambda x: x.split(" ")[0]
+
+    def amount_fixer(raw_amount: str) -> str:
+        return raw_amount.split(" ")[0]
+
     df[amount_key] = df[amount_key].apply(amount_fixer)
     df = BaseDataFrameNormalizer(df).norm()
     return df
