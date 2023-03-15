@@ -8,7 +8,7 @@ if sys.version_info >= (3, 11):
     from enum import StrEnum  # pragma: no cover
 else:
 
-    class StrEnum(str, Enum):
+    class StrEnum(str, Enum):  # pragma: no cover
         """String enum"""
 
 
