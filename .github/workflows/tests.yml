@@ -31,7 +31,7 @@ jobs:
             poetry.lock
             .github/workflows/env-markers/poetry-install.txt
       - name: Install dependencies
-        run: poetry install --ansi
+        run: poetry install
       - name: Set PY
         id: set-py
         run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
@@ -63,7 +63,7 @@ jobs:
             poetry.lock
             .github/workflows/env-markers/poetry-install-only-main-test.txt
       - name: Install dependencies
-        run: poetry install --only main,test --ansi
+        run: poetry install --only main,test
       - name: Run tests
         env:
           PY_COLORS: 1
