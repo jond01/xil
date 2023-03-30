@@ -1,4 +1,4 @@
-[![Stable Version](https://img.shields.io/pypi/v/xil?label=stable)](https://pypi.org/project/xil/#history)
+[![PyPI](https://img.shields.io/pypi/v/xil)](https://pypi.org/project/xil/#history)
 [![Python Versions](https://img.shields.io/pypi/pyversions/xil)](https://pypi.org/project/xil/)
 
 [![Tests](https://github.com/jond01/xil/actions/workflows/tests.yml/badge.svg)](https://github.com/jond01/xil/actions/workflows/tests.yml)
