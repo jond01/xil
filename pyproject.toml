@@ -16,7 +16,6 @@ classifiers = [
     "Natural Language :: English",
     "Natural Language :: Hebrew",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     "Topic :: Office/Business :: Financial",
@@ -25,7 +24,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">= 3.10, < 3.12"
+python = ">= 3.11, < 3.12"
 pandas = {version = "^2.0.0", extras = ["html"]}
 
 [tool.poetry.group.dev.dependencies]
@@ -38,7 +37,7 @@ pandas-stubs = "^1.5.3.230304"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.2"
-coverage = {extras = ["toml"], version = "^7.2.1"}
+coverage = {version = "^7.2.3", extras = ["toml"]}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
