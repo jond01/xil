@@ -1,15 +1,7 @@
 """
 Utilities for currency conversion and standardization.
 """
-import sys
-from enum import Enum
-
-if sys.version_info >= (3, 11):
-    from enum import StrEnum  # pragma: no cover
-else:
-
-    class StrEnum(str, Enum):  # pragma: no cover
-        """String enum"""
+from enum import StrEnum
 
 
 class CurrencyCode(StrEnum):
