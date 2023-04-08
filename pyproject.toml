@@ -84,6 +84,15 @@ skip_empty = true
 
 [tool.poetry-dynamic-versioning]
 enable = true
+format-jinja = """
+    {%- if distance == 0 -%}
+        {{ serialize_pep440(base, stage, revision) }}
+    {%- elif env.PYPI_PUBLISH -%}
+        {{ serialize_pep440(base, stage, revision, dev=distance) }}
+    {%- else -%}
+        {{ serialize_pep440(base, stage, revision, dev=distance, metadata=[commit]) }}
+    {%- endif -%}
+"""
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]

@@ -88,3 +88,14 @@ poetry run pytest
 ```
 Or simply `pytest` if you are in the activated virtual environment.
 All the tests should pass. Make sure you run the tests before committing your code.
+
+### Building the package
+
+To build the package, the following Poetry plugin is required:
+```shell
+poetry self add "poetry-dynamic-versioning[plugin]"
+```
+To build the package, run:
+```shell
+poetry build
+```
