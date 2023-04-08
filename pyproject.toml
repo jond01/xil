@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "xil"
 version = "0.1.0"
-description = ""
+description = "A Python library for fetching Israeli banks' ILS exchange rates"
 # TODO: decide on license
 authors = ["Jonathan Daniel <jonathand655@gmail.com>"]
 readme = "README.md"
