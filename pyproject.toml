@@ -84,6 +84,12 @@ skip_empty = true
 
 [tool.poetry-dynamic-versioning]
 enable = true
+# Remove the leading "v" from Dunamai's default pattern.
+pattern = '''(?x)                                               (?# ignore whitespace)
+    ^((?P<epoch>\d+)!)?(?P<base>\d+(\.\d+)*)                    (?# 1.2.3 or 1!2000.1.2)
+    ([-._]?((?P<stage>[a-zA-Z]+)[-._]?(?P<revision>\d+)?))?     (?# b0)
+    (\+(?P<tagged_metadata>.+))?$                               (?# +linux)
+'''
 format-jinja = """
     {%- if distance == 0 -%}
         {{ serialize_pep440(base, stage, revision) }}
