@@ -8,14 +8,11 @@ from unittest.mock import Mock, patch
 from urllib.request import Request
 
 import pytest
+from hypothesis import given, provisional, settings  # , HealthCheck, strategies
 
 from xil._headers import _DEFAULT_CONTEXT, UA_HEADER, get_url_response
 
-
-@pytest.fixture(name="url")
-def fixture_url() -> str:
-    """A tests URL that can be used (no actual call is made)"""
-    return "http://httpbin.org/get"
+_url = settings(max_examples=1)(given(url=provisional.urls()))
 
 
 @pytest.fixture(name="mock_urlopen")
@@ -35,6 +32,9 @@ def _compare_requests(request1: Request, request2: Request) -> bool:
     )
 
 
+# @given(url=provisional.urls())
+# @settings(max_examples=1)#suppress_health_check=[HealthCheck.function_scoped_fixture])
+@_url
 @pytest.mark.parametrize(
     ("default_headers", "expected_headers"), [(False, {}), (True, UA_HEADER)]
 )
@@ -42,10 +42,12 @@ def test_get_url_response_headers(
     url: str,
     default_headers: bool,
     expected_headers: dict[str, str],
-    mock_urlopen: Mock,
+    # mock_urlopen: Mock,
 ) -> None:
     """Test the get_url_response request headers"""
-    get_url_response(url, default_headers)
+    print(url)
+    with patch("urllib.request.urlopen", autospec=True) as mock_urlopen:
+        get_url_response(url, default_headers)
     mock_urlopen.assert_called_once()
     actual_request = mock_urlopen.call_args.args[0]
     expected_request = Request(url=url, headers=expected_headers)
@@ -54,6 +56,7 @@ def test_get_url_response_headers(
     ), "The actual request is different than expected"
 
 
+@given(url=provisional.urls())
 @pytest.mark.parametrize("default_headers", [False, True])
 @pytest.mark.parametrize(
     ("set_context", "expected_context"), [(False, None), (True, _DEFAULT_CONTEXT)]
