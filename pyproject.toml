@@ -42,8 +42,8 @@ coverage = "^7.2.7"
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
-[tool.isort]
-profile = "black"
+[tool.ruff]
+select = ["E", "F", "I"]
 
 [tool.pylint]
 enable = ["I"]
