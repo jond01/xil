@@ -2,7 +2,7 @@
 name = "xil"
 version = "0.1.0"
 description = "A Python library for fetching Israeli banks' ILS exchange rates"
-# TODO: decide on license
+license = "MIT"
 authors = ["Jonathan Daniel <jonathand655@gmail.com>"]
 readme = "README.md"
 repository = "https://github.com/jond01/xil"
