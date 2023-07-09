@@ -33,3 +33,7 @@ repos:
         entry: poetry run mypy
         language: system
         types: [python]
+  - repo: https://github.com/regebro/pyroma
+    rev: "4.2"
+    hooks:
+      - id: pyroma
