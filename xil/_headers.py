@@ -18,22 +18,17 @@ _DEFAULT_CONTEXT.set_ciphers("DEFAULT")
 
 def get_url_response(
     url: str,
-    default_headers: bool = True,
     set_context: bool = False,
 ) -> http.client.HTTPResponse:
     """
     Return the response from a URL with custom headers and SSL context when opening if
     set_context is True.
     """
-    if default_headers:
-        headers = UA_HEADER
-    else:
-        headers = {}
     if set_context:
         context = _DEFAULT_CONTEXT
     else:
         context = None
-    request = urllib.request.Request(url, headers=headers)
+    request = urllib.request.Request(url)
     return urllib.request.urlopen(  # type: ignore[no-any-return]
         request, context=context
     )
