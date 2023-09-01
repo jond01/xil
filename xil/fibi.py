@@ -13,7 +13,7 @@ from xil._headers import get_url_response
 
 _FIBI_URL = "http://apps.fibi.co.il/Matach/matach.aspx"
 _ENCODING = "iso-8859-8"
-_MATCH = "המחאות"
+_MATCH = "העברות והמחאות"
 _HEADER = [0, 1]
 _ATTRS = {"class": "clsPart"}
 _RELEVANT_COLS = [
@@ -22,8 +22,8 @@ _RELEVANT_COLS = [
     ("יציג", "יציג"),
     ("בנקנוטים", "מכירה"),
     ("בנקנוטים", "קניה"),
-    ("המחאות", "מכירה"),
-    ("המחאות", "קניה"),
+    ("העברות והמחאות", "מכירה"),
+    ("העברות והמחאות", "קניה"),
 ]
 _IDX0 = pd.MultiIndex.from_product([["currency"], ["name", "amount", "official rate"]])
 _IDX1 = pd.MultiIndex.from_product([["cash", "transfer"], ["sell", "buy"]])
