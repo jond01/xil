@@ -25,9 +25,7 @@ _IDX = pd.MultiIndex.from_product(
     [[_CURRENCY_KEY], ["code", "official rate", "change (%)", "amount", "time"]]
 )
 
-get_boi_url_response = partial(
-    get_url_response, default_headers=False, set_context=True
-)
+get_boi_url_response = partial(get_url_response, set_context=True)
 
 
 def get_boi_df(url: str = _BOI_URL) -> pd.DataFrame:
