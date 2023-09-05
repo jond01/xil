@@ -24,7 +24,7 @@ jobs:
       RUFF_CACHE_DIR: /opt/.cache/ruff
       MYPY_CACHE_DIR: /opt/.cache/mypy
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
       - uses: actions/setup-python@v4
@@ -56,7 +56,7 @@ jobs:
         python-version: ["3.11"]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
       - uses: actions/setup-python@v4
