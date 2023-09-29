@@ -11,7 +11,7 @@ on:
       - "releases/**"
   workflow_dispatch:
   schedule:
-    - cron: "0 15 * * *"  # Daily on 6pm Israel standard time
+    - cron: "0 15 * * *"  # Daily at 6pm Israel standard time
 
 jobs:
   pre-commit:
