@@ -38,6 +38,8 @@ def get_fibi_df(url: str = _FIBI_URL) -> pd.DataFrame:
         header=_HEADER,
         encoding=_ENCODING,
         attrs=_ATTRS,
+        # Remove the type waiver on the following line when pandas-stubs is updated:
+        # https://github.com/pandas-dev/pandas-stubs/pull/785
         storage_options=UA_HEADER,  # type: ignore[call-arg]
     )
 
