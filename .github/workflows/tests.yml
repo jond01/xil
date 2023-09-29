@@ -10,9 +10,8 @@ on:
       - main
       - "releases/**"
   workflow_dispatch:
-#  TODO: Add cron job to run tests on a regular basis
-#  schedule:
-#    - cron: "0 0 * * *"
+  schedule:
+    - cron: "0 15 * * *"  # Daily on 6pm Israel standard time
 
 jobs:
   pre-commit:
