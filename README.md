@@ -41,6 +41,8 @@ Banks that are not supported yet:
   https://www.bank-yahav.co.il/investments/foreing-currency/
 - One Zero Digital Bank (וואן זירו הבנק הדיגיטלי): no public information available.
   https://www.onezerobank.com/
+- Bank Esh Israel (בנק אש ישראל): a new bank - not commercially active yet.
+  https://www.esh.com/
 
 ## Installation
 The project requires Python 3.11 or above. To install the project, run:
