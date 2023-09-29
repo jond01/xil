@@ -21,6 +21,7 @@ KNOWN_BANKS_SET = {
     "The First International Bank of Israel Ltd",
     "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
     "One Zero Digital Bank LTD",  # Not supported - no public data
+    "Bank Esh Israel (Insetup) Ltd",  # Not supported - not commercially active yet
 }
 
 
