@@ -37,7 +37,7 @@ pandas-stubs = "^2.1.1.230928"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.1"
-coverage = "^7.3.0"
+coverage = "^7.3.2"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
