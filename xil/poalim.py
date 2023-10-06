@@ -2,7 +2,6 @@
 Scrape Bank Hapoalim exchange data publicly visible on
 https://www.bankhapoalim.co.il/he/foreign-currency/exchange-rates
 """
-# pylint: disable=invalid-name
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
