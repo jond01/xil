@@ -29,7 +29,7 @@ pandas = {version = "^2.1.1", extras = ["html"]}
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.5.0"
-pylint = "^3.0.1"
+pylint = "^3.0.2"
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^1.6.1"
