@@ -36,7 +36,7 @@ mypy = "^1.6.1"
 pandas-stubs = "^2.1.1.230928"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.4.1"
+pytest = "^7.4.3"
 coverage = "^7.3.2"
 
 [tool.poetry.urls]
