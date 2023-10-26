@@ -116,16 +116,17 @@ Push the tag to GitHub:
 git push origin <version>
 ```
 
-Run the release workflow on GitHub Actions:
+Run the [release workflow](https://github.com/jond01/xil/actions/workflows/release.yml) on GitHub Actions:
 1. First choose `test-pypi`, and verify that the package is built and uploaded to
-   TestPyPI: https://test.pypi.org/project/xil/.  
+   TestPyPI:  
+   https://test.pypi.org/project/xil/.  
    Download the wheel and verify the version number in the files:
    * `METADATA`
    * `xil/__init__.py`
-2. Then choose `pypi`, and verify that the package is built and uploaded to PyPI:
+2. Then choose `pypi`, and verify that the package is built and uploaded to PyPI:  
    https://pypi.org/project/xil/
 
-After it's done - draft a new release on GitHub. Choose the tag you just created:
+After it's done - draft a new release on GitHub. Choose the tag you have just created:  
 https://github.com/jond01/xil/releases/new
 
 Hooray! We have a new release! 🎉
