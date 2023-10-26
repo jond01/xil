@@ -100,7 +100,7 @@ To build the package, run:
 poetry build
 ```
 
-### Release workflow (for maintainers)
+# Release workflow (for maintainers)
 
 To release a new version, follow the steps below.
 
