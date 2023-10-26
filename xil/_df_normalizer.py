@@ -18,7 +18,6 @@ _CURRENCY_NAME_KEY = _IDX0[0]
 class BaseDataFrameNormalizer:
     """
     Base class that can be used when the df has a ("currency", "code") column.
-    Used in Discount bank.
     """
 
     def __init__(self, df: pd.DataFrame):
