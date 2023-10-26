@@ -99,3 +99,33 @@ To build the package, run:
 ```shell
 poetry build
 ```
+
+### Release workflow (for maintainers)
+
+To release a new version, follow the steps below.
+
+Issue a new *signed* tag locally:
+```sh
+git tag -s <version> -m "Release <version>"
+```
+Replace `<version>` with the version you want to release, e.g. `0.10.2` - without a `v`
+prefix.
+
+Push the tag to GitHub:
+```sh
+git push origin <version>
+```
+
+Run the release workflow on GitHub Actions:
+1. First choose `test-pypi`, and verify that the package is built and uploaded to
+   TestPyPI: https://test.pypi.org/project/xil/.  
+   Download the wheel and verify the version number in the files:
+   * `METADATA`
+   * `xil/__init__.py`
+2. Then choose `pypi`, and verify that the package is built and uploaded to PyPI:
+   https://pypi.org/project/xil/
+
+After it's done - draft a new release on GitHub. Choose the tag you just created:
+https://github.com/jond01/xil/releases/new
+
+Hooray! We have a new release! 🎉
