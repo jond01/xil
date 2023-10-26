@@ -6,7 +6,7 @@ on:
       repository:
         description: The index repository to publish to - PyPI or Test PyPI
         required: true
-        default: pypi
+        default: test-pypi
         type: choice
         options:
           - pypi
