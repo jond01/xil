@@ -11,6 +11,7 @@ def df_fixture() -> pd.DataFrame:
     return get_onezero_df()
 
 
+@pytest.mark.live
 def test_df(df: pd.DataFrame) -> None:
     assert (
         df.index == [CurrencyCode.EUR, CurrencyCode.USD]
