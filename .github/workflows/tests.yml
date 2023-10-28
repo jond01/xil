@@ -4,12 +4,22 @@ on:
   push:
     paths:
       - "**.py"
+      - pyproject.toml
+      - poetry.lock
+      - .github/workflows/poetry-constraint.txt
+      - .github/workflows/env-markers/poetry-install-only-main-test.txt
+      - .github/workflows/tests.yml
     branches:
       - main
       - "releases/**"
   pull_request:
     paths:
       - "**.py"
+      - pyproject.toml
+      - poetry.lock
+      - .github/workflows/poetry-constraint.txt
+      - .github/workflows/env-markers/poetry-install-only-main-test.txt
+      - .github/workflows/tests.yml
     branches:
       - main
       - "releases/**"
