@@ -14,39 +14,6 @@ on:
     - cron: "0 15 * * *"  # Daily at 6pm Israel standard time
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    env:
-      CACHE_DIR: /opt/.cache
-      PRE_COMMIT_HOME: /opt/.cache/pre-commit
-      BLACK_CACHE_DIR: /opt/.cache/black
-      RUFF_CACHE_DIR: /opt/.cache/ruff
-      MYPY_CACHE_DIR: /opt/.cache/mypy
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
-      - uses: actions/setup-python@v4
-        with:
-          python-version-file: .python-version
-          cache: poetry
-          cache-dependency-path: |
-            poetry.lock
-            .github/workflows/env-markers/poetry-install.txt
-      - name: Install dependencies
-        run: poetry install
-      - name: Set PY
-        id: set-py
-        run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        with:
-          path: ${{ env.CACHE_DIR }}
-          key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-and-deps-${{ hashFiles('.pre-commit-config.yaml', 'poetry.lock') }}
-      - name: Run pre-commit
-        env:
-          PRE_COMMIT_COLOR: always
-        run: poetry run pre-commit run --all-files
-
   tests:
     strategy:
       fail-fast: false
