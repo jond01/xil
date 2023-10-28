@@ -24,10 +24,14 @@ Please open a pull request after you have opened an issue and discussed the chan
 you want to make. This way we can make sure that the changes you want to make are
 actually needed.
 
+Code changes should be accompanied by tests. Make sure all the tests pass before opening
+a pull request.  
+If a test is a "live" test - i.e., it requires an internet connection - mark it with the
+`live` pytest marker: `@pytest.mark.live`.
+
 ## Use the project
 If you find the project useful, please consider starring it on GitHub. This will help
 others find the project.
-
 
 ## Setting up the project locally
 To set up the project on your computer, follow the steps below.
