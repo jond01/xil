@@ -53,11 +53,14 @@ jobs:
       - name: Run live tests (needing an internet connection)
         run: poetry run coverage run -m pytest -m live
       - name: Run static tests
+        if: github.event_name != 'schedule'
         run: poetry run coverage run -am pytest -m "not live" --disable-network
       - name: Report coverage
+        if: github.event_name != 'schedule'
         run: poetry run coverage report
       # The following step will be removed when all the project is covered with tests
       - name: Maintain 100% coverage on tested modules
+        if: github.event_name != 'schedule'
         run: |
           poetry run coverage report --fail-under 100 \
           xil/_currencies.py \
