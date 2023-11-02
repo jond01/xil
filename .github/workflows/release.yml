@@ -6,7 +6,7 @@ on:
       repository:
         description: The index repository to publish to - PyPI or Test PyPI
         required: true
-        default: pypi
+        default: test-pypi
         type: choice
         options:
           - pypi
@@ -15,10 +15,19 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      PYPI_PUBLISH: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version-file: .python-version
+      - name: Install the dynamic versioning plugin
+        run: poetry self add "poetry-dynamic-versioning[plugin]"
       - name: Build and publish the package (test PyPI)
         if: inputs.repository == 'test-pypi'
         env:

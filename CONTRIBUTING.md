@@ -24,10 +24,14 @@ Please open a pull request after you have opened an issue and discussed the chan
 you want to make. This way we can make sure that the changes you want to make are
 actually needed.
 
+Code changes should be accompanied by tests. Make sure all the tests pass before opening
+a pull request.  
+If a test is a "live" test - i.e., it requires an internet connection - mark it with the
+`live` pytest marker: `@pytest.mark.live`.
+
 ## Use the project
 If you find the project useful, please consider starring it on GitHub. This will help
 others find the project.
-
 
 ## Setting up the project locally
 To set up the project on your computer, follow the steps below.
@@ -88,3 +92,45 @@ poetry run pytest
 ```
 Or simply `pytest` if you are in the activated virtual environment.
 All the tests should pass. Make sure you run the tests before committing your code.
+
+### Building the package
+
+To build the package, the following Poetry plugin is required:
+```shell
+poetry self add "poetry-dynamic-versioning[plugin]"
+```
+To build the package, run:
+```shell
+poetry build
+```
+
+# Release workflow (for maintainers)
+
+To release a new version, follow the steps below.
+
+Issue a new *signed* tag locally:
+```sh
+git tag -s <version> -m "Release <version>"
+```
+Replace `<version>` with the version you want to release, e.g. `0.10.2` - without a `v`
+prefix.
+
+Push the tag to GitHub:
+```sh
+git push origin <version>
+```
+
+Run the [release workflow](https://github.com/jond01/xil/actions/workflows/release.yml) on GitHub Actions:
+1. First choose `test-pypi`, and verify that the package is built and uploaded to
+   TestPyPI:  
+   https://test.pypi.org/project/xil/.  
+   Download the wheel and verify the version number in the files:
+   * `METADATA`
+   * `xil/__init__.py`
+2. Then choose `pypi`, and verify that the package is built and uploaded to PyPI:  
+   https://pypi.org/project/xil/
+
+After it's done - draft a new release on GitHub. Choose the tag you have just created:  
+https://github.com/jond01/xil/releases/new
+
+Hooray! We have a new release! 🎉

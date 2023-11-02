@@ -2,48 +2,32 @@ name: Tests
 
 on:
   push:
+    paths:
+      - "**.py"
+      - pyproject.toml
+      - poetry.lock
+      - .github/workflows/poetry-constraint.txt
+      - .github/workflows/env-markers/poetry-install-only-main-test.txt
+      - .github/workflows/tests.yml
     branches:
       - main
       - "releases/**"
   pull_request:
+    paths:
+      - "**.py"
+      - pyproject.toml
+      - poetry.lock
+      - .github/workflows/poetry-constraint.txt
+      - .github/workflows/env-markers/poetry-install-only-main-test.txt
+      - .github/workflows/tests.yml
     branches:
       - main
       - "releases/**"
   workflow_dispatch:
-#  TODO: Add cron job to run tests on a regular basis
-#  schedule:
-#    - cron: "0 0 * * *"
+  schedule:
+    - cron: "0 15 * * *"  # Daily at 6pm Israel standard time
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    env:
-      PRE_COMMIT_HOME: /opt/.cache/pre-commit
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install Poetry
-        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
-      - uses: actions/setup-python@v4
-        with:
-          python-version-file: .python-version
-          cache: poetry
-          cache-dependency-path: |
-            poetry.lock
-            .github/workflows/env-markers/poetry-install.txt
-      - name: Install dependencies
-        run: poetry install
-      - name: Set PY
-        id: set-py
-        run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        with:
-          path: ${{ env.PRE_COMMIT_HOME }}
-          key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-${{ hashFiles('.pre-commit-config.yaml') }}
-      - name: Run pre-commit
-        env:
-          PRE_COMMIT_COLOR: always
-        run: poetry run pre-commit run --all-files
-
   tests:
     strategy:
       fail-fast: false
@@ -51,8 +35,10 @@ jobs:
         os: [ubuntu-latest]
         python-version: ["3.11", "3.12-dev"]
     runs-on: ${{ matrix.os }}
+    env:
+      PY_COLORS: 1
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
       - name: Install lxml requirements
@@ -67,16 +53,20 @@ jobs:
             .github/workflows/env-markers/poetry-install-only-main-test.txt
       - name: Install dependencies
         run: poetry install --only main,test
-      - name: Run tests
-        env:
-          PY_COLORS: 1
-        run: poetry run coverage run -m pytest
+      - name: Run live tests (needing an internet connection)
+        run: poetry run coverage run -m pytest -m live
+      - name: Run static tests
+        if: github.event_name != 'schedule'
+        run: poetry run coverage run -am pytest -m "not live" --disable-network
       - name: Report coverage
+        if: github.event_name != 'schedule'
         run: poetry run coverage report
-      # The following step will be removed when all the project will be covered by tests
+      # The following step will be removed when all the project is covered with tests
       - name: Maintain 100% coverage on tested modules
+        if: github.event_name != 'schedule'
         run: |
           poetry run coverage report --fail-under 100 \
           xil/_currencies.py \
           xil/_headers.py \
           xil/_df_normalizer.py \
+          xil/onezero.py \
