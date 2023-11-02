@@ -33,7 +33,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.11", "3.12-dev"]
+        python-version: ["3.11", "3.12"]
     runs-on: ${{ matrix.os }}
     env:
       PY_COLORS: 1
@@ -42,7 +42,7 @@ jobs:
       - name: Install Poetry
         run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
       - name: Install lxml requirements
-        if: matrix.python-version == '3.12-dev'
+        if: matrix.python-version == '3.12'
         run: sudo apt-get install libxml2-dev libxslt-dev
       - uses: actions/setup-python@v4
         with:
