@@ -72,6 +72,9 @@ object.__init__\(\) takes exactly one argument \(the instance to initialize\)
 This is deprecated in traitlets 4.2.This error will be raised in a future release of traitlets.
 :DeprecationWarning
     ''',
+    # To be removed in the next python-dsteutil release.
+    # See: https://github.com/dateutil/dateutil/issues/1314
+    'ignore:datetime.datetime.utcfromtimestamp\(\) is deprecated:DeprecationWarning:dateutil.tz.tz:37',
 ]
 addopts = [
     "--import-mode=importlib",
