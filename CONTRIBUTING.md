@@ -44,7 +44,7 @@ git clone https://github.com/jond01/xil.git
 
 ### Python environment
 #### Python version
-This package supports specific versions of Python, with the minimal version specified in
+This package supports specific versions of Python, with the latest version specified in
 the [`.python-version` file](.python-version). Make sure you have at least this version
 installed. You can use [pyenv](https://github.com/pyenv/pyenv) to manage multiple
 Python versions.
