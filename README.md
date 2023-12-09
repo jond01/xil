@@ -53,3 +53,7 @@ pip install xil
 ## Contributing to the XIL project
 
 Please read the [Contribution Guide](https://github.com/jond01/xil/blob/main/CONTRIBUTING.md).
+
+## Similar projects
+
+* https://github.com/eshaham/israeli-bank-scrapers
