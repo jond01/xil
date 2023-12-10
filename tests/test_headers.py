@@ -3,7 +3,7 @@ Test the _headers module.
 """
 
 import ssl
-from typing import Generator
+from collections.abc import Generator
 from unittest.mock import Mock, patch
 from urllib.request import Request
 
