@@ -44,7 +44,11 @@ coverage = "^7.3.2"
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
 [tool.ruff]
-select = ["E", "F", "I"]
+select = [
+    "F",   # Pyflakes
+    "E",   # pycodestyle
+    "I",   # isort
+]
 target-version = "py311"
 
 [tool.pylint]
