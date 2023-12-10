@@ -50,6 +50,8 @@ select = [
     "I",   # isort
     "N",   # pep8-naming
     "UP",  # pyupgrade
+    "B",   # flakes8-bugbear
+    "A",   # flake8-builtins
     "RUF", # Ruff
 ]
 target-version = "py311"
