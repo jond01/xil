@@ -50,8 +50,10 @@ select = [
     "I",   # isort
     "N",   # pep8-naming
     "UP",  # pyupgrade
+    "RUF", # Ruff
 ]
 target-version = "py311"
+allowed-confusables = ["ט", "י", "ן"]
 
 [tool.pylint]
 enable = ["I"]
