@@ -48,6 +48,7 @@ select = [
     "F",   # Pyflakes
     "E",   # pycodestyle
     "I",   # isort
+    "N",   # pep8-naming
     "UP",  # pyupgrade
 ]
 target-version = "py311"
