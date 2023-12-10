@@ -52,6 +52,7 @@ select = [
     "UP",  # pyupgrade
     "B",   # flakes8-bugbear
     "A",   # flake8-builtins
+    "PL",  # Pylint
     "RUF", # Ruff
 ]
 target-version = "py311"
