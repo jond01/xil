@@ -54,10 +54,15 @@ select = [
     "B",   # flakes8-bugbear
     "A",   # flake8-builtins
     "PL",  # Pylint
+    "PD",  # pandas-vet
     "RUF", # Ruff
 ]
 target-version = "py311"
 allowed-confusables = ["ט", "י", "ן"]
+ignore = [
+    "PD002", # allow inplace operations
+    "PD901", # allow using `df` as a variable name
+]
 
 [tool.pylint]
 enable = ["I"]
