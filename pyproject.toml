@@ -54,6 +54,7 @@ select = [
     "B",   # flakes8-bugbear
     "A",   # flake8-builtins
     "DTZ", # flake8-datetimez
+    "ICN", # flake8-import-conventions
     "PD",  # pandas-vet
     "PL",  # Pylint
     "RUF", # Ruff
