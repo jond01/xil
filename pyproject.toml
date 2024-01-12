@@ -45,20 +45,21 @@ coverage = "^7.3.2"
 
 [tool.ruff]
 select = [
-    "F",   # Pyflakes
-    "E",   # pycodestyle
-    "W",   # pycodestyle
-    "I",   # isort
-    "N",   # pep8-naming
-    "UP",  # pyupgrade
-    "B",   # flakes8-bugbear
-    "A",   # flake8-builtins
-    "DTZ", # flake8-datetimez
-    "ICN", # flake8-import-conventions
-    "SIM", # flake8-simplify
-    "PD",  # pandas-vet
-    "PL",  # Pylint
-    "RUF", # Ruff
+    "F",    # Pyflakes
+    "E",    # pycodestyle
+    "W",    # pycodestyle
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flakes8-bugbear
+    "A",    # flake8-builtins
+    "DTZ",  # flake8-datetimez
+    "ICN",  # flake8-import-conventions
+    "SIM",  # flake8-simplify
+    "PD",   # pandas-vet
+    "PL",   # Pylint
+    "PERF", # Perflint
+    "RUF",  # Ruff
 ]
 target-version = "py311"
 allowed-confusables = ["ט", "י", "ן"]
