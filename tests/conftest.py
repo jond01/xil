@@ -69,12 +69,16 @@ def pytest_configure(config: Config) -> None:
 
 
 def pytest_runtest_setup(item: Item) -> None:
-    if list(item.iter_markers(name=_DISABLE_NETWORK)):
-        if socket.socket.connect != _patched_connect:
-            socket.socket.connect = _patched_connect  # type: ignore[method-assign]
+    if (
+        list(item.iter_markers(name=_DISABLE_NETWORK))
+        and socket.socket.connect != _patched_connect
+    ):
+        socket.socket.connect = _patched_connect  # type: ignore[method-assign]
 
 
 def pytest_runtest_teardown(item: Item) -> None:
-    if list(item.iter_markers(name=_DISABLE_NETWORK)):
-        if socket.socket.connect != _original_connect:
-            socket.socket.connect = _original_connect  # type: ignore[method-assign]
+    if (
+        list(item.iter_markers(name=_DISABLE_NETWORK))
+        and socket.socket.connect != _original_connect
+    ):
+        socket.socket.connect = _original_connect  # type: ignore[method-assign]

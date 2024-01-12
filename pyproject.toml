@@ -55,6 +55,7 @@ select = [
     "A",   # flake8-builtins
     "DTZ", # flake8-datetimez
     "ICN", # flake8-import-conventions
+    "SIM", # flake8-simplify
     "PD",  # pandas-vet
     "PL",  # Pylint
     "RUF", # Ruff

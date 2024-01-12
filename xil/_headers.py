@@ -24,10 +24,7 @@ def get_url_response(
     Return the response from a URL with custom headers and SSL context when opening if
     set_context is True.
     """
-    if set_context:
-        context = _DEFAULT_CONTEXT
-    else:
-        context = None
+    context = _DEFAULT_CONTEXT if set_context else None
     request = urllib.request.Request(url)
     return urllib.request.urlopen(  # type: ignore[no-any-return]
         request, context=context
