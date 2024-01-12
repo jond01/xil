@@ -61,7 +61,7 @@ def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    df = get_df(datetime(2022, 10, 25), filter_cols=True)
+    df = get_df(datetime(2022, 10, 25, tzinfo=IL_TZ), filter_cols=True)
     with pd.option_context(
         "display.max_rows", None, "display.max_columns", None, "display.width", None
     ):
