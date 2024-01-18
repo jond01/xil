@@ -36,7 +36,7 @@ jobs:
       - name: Set PY
         id: set-py
         run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ${{ env.CACHE_DIR }}
           key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-and-deps-${{ hashFiles('.pre-commit-config.yaml', 'poetry.lock') }}
