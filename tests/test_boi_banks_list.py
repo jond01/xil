@@ -13,6 +13,7 @@ https://www.boi.org.il/boi_files/Pikuah/banking_corporations_en.xml"
 KNOWN_BANKS = {
     "Bank Hapoalim B.M",
     "Bank Leumi Le-Israel B.M",
+    "Pepper",  # A branding of Bank Leumi
     "Bank Massad Ltd",
     "Bank of Jerusalem Ltd",
     "Israel Discount Bank Ltd",
