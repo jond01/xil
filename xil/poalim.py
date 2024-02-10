@@ -50,7 +50,12 @@ def get_df(t: datetime | None = None, filter_cols: bool = True) -> pd.DataFrame:
         #  import calendar, calendar.SATURDAY or calendar.SUNDAY
         t = datetime.now(IL_TZ)
 
-    df = pd.read_json(_get_url(t))
+    df = pd.read_json(
+        _get_url(t),
+        storage_options={
+            "Cookie": "incap_ses_264_2405640=5i/AYDg3iC0V2T/Ie+upAzTcx2UAAAAAc0NmVMh9qbUppfAB23nspg==;"
+        },
+    )
     if not filter_cols:
         return df
 
