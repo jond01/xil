@@ -44,7 +44,7 @@ Banks that are not supported yet:
 
 ## Installation
 
-The project requires Python 3.11 or above. To install the project, run:
+The project requires Python 3.12 or above. To install the project, run:
 
 ```shell
 pip install xil
