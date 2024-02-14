@@ -43,9 +43,7 @@ class TestEmptyData:
     )
     def test_weekend(t: date) -> None:
         """Weekend in this context is Saturday and Sunday"""
-        assert pd.read_json(  # pylint: disable=no-member
-            _get_url(t)
-        ).empty, "The df is nonempty"
+        assert get_df(t).empty, "The df is nonempty"
 
     @staticmethod
     @pytest.fixture()
