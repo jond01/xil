@@ -32,6 +32,10 @@ _IDX1 = pd.MultiIndex.from_product([["transfer", "cash"], ["buy", "sell"]])
 _IDX = _IDX0.append(_IDX1)
 
 
+def _il_date() -> date:
+    return datetime.now(IL_TZ).date()
+
+
 def _get_url(t: date) -> str:
     return _POALIM_QUERY + t.strftime(_DATE_FORMAT)
 
@@ -48,7 +52,7 @@ def get_df(t: date | None = None, filter_cols: bool = True) -> pd.DataFrame:
         # TODO: on Sunday and Saturday there are no exchange rates, choose the last
         #  active day. To check the day use t.weekday() and compare to:
         #  import calendar, calendar.SATURDAY or calendar.SUNDAY
-        t = datetime.now(IL_TZ).date()
+        t = _il_date()
 
     df = pd.read_json(_get_url(t))
     if not filter_cols:
