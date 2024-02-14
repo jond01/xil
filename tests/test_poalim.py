@@ -48,11 +48,11 @@ class TestEmptyData:
 
     @staticmethod
     @pytest.fixture()
-    def empty_today() -> bool:
+    def expect_empty_today() -> bool:
         return _is_weekend(_il_date())
 
     @staticmethod
-    def test_today(empty_today: bool) -> None:
+    def test_today(expect_empty_today: bool) -> None:
         assert (
-            get_df().empty == empty_today
+            get_df().empty == expect_empty_today
         ), "The df emptiness is different than expected"
