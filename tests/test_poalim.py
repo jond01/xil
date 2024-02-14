@@ -1,10 +1,11 @@
-# pylint: disable=missing-module-docstring, missing-class-docstring, missing-function-docstring
+# pylint: disable=missing-module-docstring, missing-class-docstring, missing-function-docstring, redefined-outer-name
 import calendar
 from datetime import date
 
 import pandas as pd
 import pytest
 
+from xil._currencies import CurrencyCode
 from xil.poalim import _get_url, _il_date, get_df
 
 
@@ -56,3 +57,34 @@ class TestEmptyData:
         assert (
             get_df().empty == expect_empty_today
         ), "The df emptiness is different than expected"
+
+
+@pytest.fixture()
+def df() -> pd.DataFrame:
+    return get_df()
+
+
+@pytest.fixture()
+def expected_currencies() -> list[CurrencyCode]:
+    return [
+        CurrencyCode.USD,
+        CurrencyCode.GBP,
+        CurrencyCode.CHF,
+        CurrencyCode.DKK,
+        CurrencyCode.EUR,
+        CurrencyCode.NOK,
+        CurrencyCode.CAD,
+        CurrencyCode.AUD,
+        CurrencyCode.JPY,
+        CurrencyCode.JOD,
+        CurrencyCode.TRY,
+    ]
+
+
+@pytest.mark.live
+def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
+    assert (df.index == expected_currencies).all(), "The currencies are not as expected"
+    assert (df[("transfer", "sell")] > df[("transfer", "buy")]).all()
+    assert (df[("cash", "sell")] > df[("cash", "buy")]).all()
+    assert (df[("cash", "sell")] > df[("transfer", "sell")]).all()
+    assert (df[("transfer", "buy")] > df[("cash", "buy")]).all()
