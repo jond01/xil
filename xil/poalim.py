@@ -45,8 +45,6 @@ def get_df(t: date | None = None, filter_cols: bool = True) -> pd.DataFrame:
     Get poalim exchange data from now or a specified date t as a pandas DataFrame.
     If filter_cols is true, only the relevant columns will be returned.
     """
-    # pylint: disable=redefined-outer-name
-
     if t is None:
         # pylint: disable-next=fixme
         # TODO: on Sunday and Saturday there are no exchange rates, choose the last
@@ -62,12 +60,3 @@ def get_df(t: date | None = None, filter_cols: bool = True) -> pd.DataFrame:
     df.columns = _IDX
     df = JPYNormalizer(df).norm()
     return df
-
-
-if __name__ == "__main__":
-    df = get_df(date(2022, 10, 25), filter_cols=True)
-    with pd.option_context(
-        "display.max_rows", None, "display.max_columns", None, "display.width", None
-    ):
-        print(df)
-    print(df.iloc[0])
