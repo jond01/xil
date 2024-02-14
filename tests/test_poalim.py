@@ -1,9 +1,15 @@
 # pylint: disable=missing-module-docstring, missing-function-docstring
 from datetime import date
+import calendar
 
 import pytest
 
 from xil.poalim import IL_TZ, _get_url
+
+
+def _is_weekend(t: date) -> bool:
+    """Return True if the day is Saturday or Sunday, otherwise False"""
+    return t.weekday() in (calendar.SATURDAY, calendar.SUNDAY)
 
 
 @pytest.mark.parametrize(
