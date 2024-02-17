@@ -3,8 +3,9 @@ Leumi's official exchange web page:
 https://www.leumi.co.il/Lobby/currency_rates/40806/
 embeds the table from:
 https://www.bankleumi.co.il/vgnprod/currency/new_shaar_muskamim.html
+https://www.bankleumi.co.il/Rates/Forex/Scripts/drawTable.js
 which in turn consumes its data from:
-https://www.bankleumi.co.il/vgnprod/currency/ajax/new_shaar_muskamim_data.json
+https://www.bankleumi.co.il/Rates/Api3.5/ForeignExchange/LatestSelectedRates.aspx
 
 Historical data by currency ID:
 https://www.bankleumi.co.il/vgnprod/currency/ExchangeRateByCurrency.aspx?in_matbea=1
@@ -22,7 +23,7 @@ from xil._df_normalizer import JPYNormalizer
 from xil._headers import UA_HEADER
 
 _LEUMI_URL = "\
-https://www.bankleumi.co.il/vgnprod/currency/ajax/new_shaar_muskamim_data.json"
+https://www.bankleumi.co.il/Rates/Api3.5/ForeignExchange/LatestSelectedRates.aspx"
 _IDX0 = pd.MultiIndex.from_product(
     [["currency"], ["name", "official rate", "change (%)"]]
 )
