@@ -13,7 +13,6 @@ https://www.boi.org.il/boi_files/Pikuah/banking_corporations_en.xml"
 KNOWN_BANKS = {
     "Bank Hapoalim B.M",
     "Bank Leumi Le-Israel B.M",
-    "Pepper",  # A branding of Bank Leumi
     "Bank Massad Ltd",
     "Bank of Jerusalem Ltd",
     "Israel Discount Bank Ltd",
@@ -23,16 +22,17 @@ KNOWN_BANKS = {
     "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
     "One Zero Digital Bank LTD",  # Not supported - no public data
     "Bank Esh Israel (Insetup) Ltd",  # Not supported - not commercially active yet
-    "grinlad",  # ?
 }
 
 
 @pytest.fixture(name="boi_banks")
 def fixture_boi_banks() -> set[str]:
-    """Get the set on Israeli banks from BOI online XML"""
+    """Get the set on Israeli banks with bank code from BOI online XML"""
     with get_boi_url_response(BOI_XML_URL) as response:
         df = pd.read_xml(response)
-    return set(df[df["Category"] == "COMMERCIAL BANKS"]["Name"])
+    return set(
+        df[(df["Category"] == "COMMERCIAL BANKS") & df["Bank_Code"].notna()]["Name"]
+    )
 
 
 @pytest.mark.live
