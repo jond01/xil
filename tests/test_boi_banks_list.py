@@ -23,6 +23,7 @@ KNOWN_BANKS = {
     "Bank Yahav  for Government Employees Ltd",  # Not supported - no public data
     "One Zero Digital Bank LTD",  # Not supported - no public data
     "Bank Esh Israel (Insetup) Ltd",  # Not supported - not commercially active yet
+    "grinlad",  # ?
 }
 
 
