@@ -26,6 +26,37 @@ class CurrencyCode(StrEnum):
     JOD = "JOD"  # Jordanian Dinar
     AED = "AED"  # UAE Dirham
     EGP = "EGP"  # Egyptian Pound
+    ETB = "ETB"  # Ethiopian birr
+    LKR = "LKR"  # Sri Lankan rupee
+    NGN = "NGN"  # Nigerian naira
+    KRW = "KRW"  # South Korean won
+    BGN = "BGN"  # Bulgarian Lev
+    CNY = "CNY"  # Yuan Renminbi
+    MXN = "MXN"  # Mexican Peso
+    SAR = "SAR"  # Saudi Riyal
+    HUF = "HUF"  # Hungarian Forint
+    INR = "INR"  # Indian Rupee
+    PEN = "PEN"  # Peruvian Sol
+    IDR = "IDR"  # Indonesian Rupiah
+    RUB = "RUB"  # Russian Ruble
+    TWD = "TWD"  # New Taiwan Dollar
+    HRK = "HRK"  # Croatian Kuna
+    SAL = "SAL"  # Salvadoran Colon
+    THB = "THB"  # Thai Baht
+    CZK = "CZK"  # Czech Koruna
+    PHP = "PHP"  # Philippine Peso
+    LBP = "LBP"  # Lebanese Pound
+    PLN = "PLN"  # Polish Zloty
+    BRL = "BRL"  # Brazilian Real
+    CLP = "CLP"  # Chilean Peso
+    ARS = "ARS"  # Argentine Peso
+    RON = "RON"  # Romanian Leu
+
+    # ISO 4217 non-currencies
+    XAG = "XAG"  # Silver
+    XAU = "XAU"  # Gold
+    XPD = "XPD"  # Palladium
+    XPT = "XPT"  # Platinum
 
 
 _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
