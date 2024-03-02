@@ -67,3 +67,4 @@ jobs:
           xil/_headers.py \
           xil/_df_normalizer.py \
           xil/onezero.py \
+          xil/discount.py \
