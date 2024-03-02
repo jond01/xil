@@ -68,3 +68,4 @@ jobs:
           xil/_df_normalizer.py \
           xil/onezero.py \
           xil/discount.py \
+          xil/mercantile.py \
