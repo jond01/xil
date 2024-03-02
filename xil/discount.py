@@ -24,7 +24,3 @@ def get_discount_df(url: str = _DISCOUNT_URL) -> pd.DataFrame:
     df.columns = _DISCOUNT_IDX
     df = BaseDataFrameNormalizer(df).norm()
     return df
-
-
-if __name__ == "__main__":
-    print(get_discount_df())
