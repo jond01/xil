@@ -5,7 +5,6 @@ https://www.discountbank.co.il/private/general-information/foreign-currency-tran
 Takes the data from:
 https://www.discountbank.co.il/api/ExchangeRates/GetExchangeRates?bankCode=0011
 """
-
 import pandas as pd
 
 from xil._df_normalizer import BaseDataFrameNormalizer
