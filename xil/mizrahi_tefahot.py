@@ -4,6 +4,7 @@ https://www.mizrahi-tefahot.co.il/brokerage/foreignexchange/
 Exchange calculator:
 https://www.mizrahi-tefahot.co.il/brokerage/currancyexchange/
 """
+
 import pandas as pd
 
 from xil._df_normalizer import DataFrameNormalizer

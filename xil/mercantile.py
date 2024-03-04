@@ -7,6 +7,7 @@ https://www.mercantile.co.il/api/ExchangeRates/GetExchangeRates?bankCode=0017
 
 The structure is identical Discount's, but the data is different.
 """
+
 import pandas as pd
 
 from xil.discount import get_discount_df as _get_discount_df

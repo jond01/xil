@@ -1,6 +1,7 @@
 """
 Currencies DataFrame (df) normalization.
 """
+
 import pandas as pd
 
 from xil._currencies import currency_from_heb_name

@@ -17,6 +17,7 @@ https://www.bankleumi.co.il/vgnprod/ltrade_new_shaar_muskamim_multilang_vgn_HE.h
 
 Looks like the business data is identical to the private data.
 """
+
 import pandas as pd
 
 from xil._df_normalizer import JPYNormalizer

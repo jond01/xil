@@ -2,6 +2,7 @@
 Test the _currencies module.
 This test module checks only a small subset of the currencies.
 """
+
 # pylint: disable=missing-function-docstring,missing-class-docstring
 import pytest
 
