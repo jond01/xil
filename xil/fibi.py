@@ -6,6 +6,7 @@ https://www.fibi.co.il/wps/portal/FibiMenu/Marketing/Private/ForeignCurrency/Tra
 includes static data from:
 https://apps.fibi.co.il/Matach/matach.aspx
 """
+
 import pandas as pd
 
 from xil._df_normalizer import DataFrameNormalizer

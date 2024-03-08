@@ -1,6 +1,7 @@
 """
 Test the _df_normalizer module.
 """
+
 # pylint: disable=missing-function-docstring,missing-class-docstring
 from contextlib import AbstractContextManager
 from unittest.mock import Mock, patch

@@ -3,6 +3,7 @@ Jerusalem bank exchange data
 
 https://www.bankjerusalem.co.il/capital-market/rates
 """
+
 import pandas as pd
 
 from xil._df_normalizer import DataFrameNormalizer

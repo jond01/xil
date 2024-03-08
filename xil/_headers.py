@@ -1,6 +1,7 @@
 """
 Shared functionalities for retrieving URLs' data when headers are needed
 """
+
 import http.client
 import ssl
 import urllib.request

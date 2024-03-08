@@ -52,7 +52,7 @@ jobs:
         run: poetry install --only main,test
       - name: Run live tests (needing an internet connection)
         run: poetry run coverage run -m pytest -m live
-      - name: Run static tests
+      - name: Run offline tests
         if: github.event_name != 'schedule'
         run: poetry run coverage run -am pytest -m "not live" --disable-network
       - name: Report coverage
@@ -67,4 +67,6 @@ jobs:
           xil/_headers.py \
           xil/_df_normalizer.py \
           xil/onezero.py \
+          xil/discount.py \
+          xil/mercantile.py \
           xil/poalim.py \

@@ -4,6 +4,7 @@ https://www.onezerobank.com/currencies/
 It loads the data from:
 https://dv16ymfyh91nr.cloudfront.net/MarketingRatesReport/MarketingSiteFCYRatesCurrentReport.json
 """
+
 import pandas as pd
 
 from xil._currencies import CurrencyCode
