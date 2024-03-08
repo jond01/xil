@@ -43,6 +43,9 @@ coverage = "^7.3.2"
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
 [tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
 select = [
     "F",    # Pyflakes
     "E",    # pycodestyle
@@ -60,12 +63,11 @@ select = [
     "PERF", # Perflint
     "RUF",  # Ruff
 ]
-target-version = "py311"
-allowed-confusables = ["ט", "י", "ן"]
 ignore = [
     "PD002", # allow inplace operations
     "PD901", # allow using `df` as a variable name
 ]
+allowed-confusables = ["ט", "י", "ן"]
 
 [tool.pylint]
 enable = ["I"]
