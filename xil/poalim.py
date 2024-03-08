@@ -36,23 +36,27 @@ def _il_date() -> date:
     return datetime.now(IL_TZ).date()
 
 
-def _get_url(t: date) -> str:
+def _get_url(t: date | None) -> str:
+    if t is None:
+        return _POALIM_GET_URL
     return _POALIM_QUERY + t.strftime(_DATE_FORMAT)
 
 
-def get_df(t: date | None = None, filter_cols: bool = True) -> pd.DataFrame:
+def get_df(
+    t: date | None = None, last_date: bool = True, filter_cols: bool = True
+) -> pd.DataFrame:
     """
-    Get poalim exchange data from now or a specified date t as a pandas DataFrame.
+    Get poalim exchange data from the latest available day or a specified
+    date t as a pandas DataFrame. If last_date is true, and there is no
+    specified date t, only the last available date's data is returned.
     If filter_cols is true, only the relevant columns will be returned.
     """
-    if t is None:
-        # pylint: disable-next=fixme
-        # TODO: on Sunday and Saturday there are no exchange rates, choose the last
-        #  active day. To check the day use t.weekday() and compare to:
-        #  import calendar, calendar.SATURDAY or calendar.SUNDAY
-        t = _il_date()
-
     df = pd.read_json(_get_url(t))
+
+    if t is None and last_date:
+        date_col = pd.to_datetime(df["DT_ERECH"], format=_DATE_FORMAT).dt.date
+        df = df[date_col == date_col.max()]
+
     if not filter_cols:
         return df
 
