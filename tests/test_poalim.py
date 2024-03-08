@@ -51,6 +51,11 @@ def df() -> pd.DataFrame:
 
 
 @pytest.fixture()
+def multi_date_df() -> pd.DataFrame:
+    return get_df(keep_last_date_only=False)
+
+
+@pytest.fixture()
 def expected_currencies() -> list[CurrencyCode]:
     return [
         CurrencyCode.USD,
@@ -74,3 +79,8 @@ def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
     assert (df[("cash", "sell")] > df[("cash", "buy")]).all()
     assert (df[("cash", "sell")] > df[("transfer", "sell")]).all()
     assert (df[("transfer", "buy")] > df[("cash", "buy")]).all()
+
+
+@pytest.mark.live
+def test_multi_date_df(multi_date_df: pd.DataFrame) -> None:
+    assert len(multi_date_df.date.unique()) > 1, "Multiple dates are expected"
