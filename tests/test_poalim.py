@@ -86,36 +86,3 @@ def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
     assert (df[("cash", "sell")] > df[("cash", "buy")]).all()
     assert (df[("cash", "sell")] > df[("transfer", "sell")]).all()
     assert (df[("transfer", "buy")] > df[("cash", "buy")]).all()
-
-
-@pytest.fixture()
-def unfiltered_df() -> pd.DataFrame:
-    return get_df(filter_cols=False)
-
-
-@pytest.fixture()
-def expected_unfiltered_columns() -> list[str]:
-    return [
-        "KOD_MATBEA",
-        "DT_ERECH",
-        "SHAAR_YATZIG",
-        "SHAAR_CHK_KNIA",
-        "SHAAR_CHK_MECHIRA",
-        "SHAAR_CASH_KNIA",
-        "SHAAR_CASH_MECHIRA",
-        "CHANGE",
-        "DATE_CHALIFIN",
-        "DT_VALID",
-        "NAME_HEB",
-        "TAX_ORDER",
-        "AHUZ_SHINUI",
-    ]
-
-
-@pytest.mark.live
-def test_unfiltered_df(
-    unfiltered_df: pd.DataFrame, expected_unfiltered_columns: list[str]
-) -> None:
-    assert (
-        unfiltered_df.columns == expected_unfiltered_columns
-    ).all(), "The unfiltered columns are different than expected"

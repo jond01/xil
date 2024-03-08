@@ -42,23 +42,17 @@ def _get_url(t: date | None) -> str:
     return _POALIM_QUERY + t.strftime(_DATE_FORMAT)
 
 
-def get_df(
-    t: date | None = None, last_date: bool = True, filter_cols: bool = True
-) -> pd.DataFrame:
+def get_df(t: date | None = None, last_date: bool = True) -> pd.DataFrame:
     """
     Get poalim exchange data from the latest available day or a specified
     date t as a pandas DataFrame. If last_date is true, and there is no
     specified date t, only the last available date's data is returned.
-    If filter_cols is true, only the relevant columns will be returned.
     """
     df = pd.read_json(_get_url(t))
 
     if t is None and last_date:
         date_col = pd.to_datetime(df["DT_ERECH"], format=_DATE_FORMAT).dt.date
         df = df[date_col == date_col.max()]
-
-    if not filter_cols:
-        return df
 
     df = df[_RELEVANT_COLS]
     df.columns = _IDX
