@@ -3,14 +3,12 @@ Scrape Bank Hapoalim exchange data publicly visible on
 https://www.bankhapoalim.co.il/he/foreign-currency/exchange-rates
 """
 
-from datetime import date, datetime
-from zoneinfo import ZoneInfo
+from datetime import date
 
 import pandas as pd
 
 from xil._df_normalizer import JPYNormalizer
 
-IL_TZ = ZoneInfo("Israel")
 _POALIM_GET_URL = "https://www.bankhapoalim.co.il/he/coin-rates"
 _DATE_QUERY = "?date="
 _POALIM_QUERY = _POALIM_GET_URL + _DATE_QUERY
@@ -32,10 +30,6 @@ _IDX1 = pd.MultiIndex.from_product(
 )
 _IDX2 = pd.MultiIndex.from_product([["transfer", "cash"], ["buy", "sell"]])
 _IDX = _IDX0.append(_IDX1.append(_IDX2))
-
-
-def _il_date() -> date:
-    return datetime.now(IL_TZ).date()
 
 
 def _get_url(t: date | None) -> str:
