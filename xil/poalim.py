@@ -13,7 +13,6 @@ _POALIM_GET_URL = "https://www.bankhapoalim.co.il/he/coin-rates"
 _DATE_QUERY = "?date="
 _POALIM_QUERY = _POALIM_GET_URL + _DATE_QUERY
 _DATE_FORMAT = "%Y-%m-%d"  # YYYY-MM-DD
-# _IRRELEVANT_COLS = ["CHANGE", "DATE_CHALIFIN", "DT_VALID", "TAX_ORDER"]
 _RELEVANT_COLS = [
     "DT_ERECH",
     "NAME_HEB",
