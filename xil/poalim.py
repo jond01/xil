@@ -43,7 +43,18 @@ def get_df(t: date | None = None, keep_last_date_only: bool = True) -> pd.DataFr
     date t as a pandas DataFrame. If keep_last_date_only is true, and there
     is no specified date t, only the last available date's data is returned.
     """
-    df = pd.read_json(_get_url(t))
+    df = pd.read_json(
+        _get_url(t),
+        storage_options={
+            "Cookie": " ".join(
+                """\
+incap_ses_1255_2405596=a/GzCf3fvnceYM2cLahqEUXj6mUAAAAAtfv8l97VCsPJsew65Qa8XA==;
+incap_ses_1255_2405249=DKE/HuRYLSgUMtWcLahqEf/t6mUAAAAArYjjw97q1DiiXLULf6cJJw==;
+incap_ses_1255_2405640=wc+ZOPCR9VzEeB+dLahqEfF762UAAAAAk7Vee7dBohFS/K9LTiy3wg==
+            """.splitlines()
+            )
+        },
+    )
     if df.empty:  # pylint: disable=no-member
         return df
 
