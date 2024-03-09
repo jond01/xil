@@ -1,5 +1,6 @@
 # pylint: disable=missing-module-docstring, missing-function-docstring, redefined-outer-name
 import calendar
+import os
 from datetime import date
 
 import pandas as pd
@@ -7,6 +8,11 @@ import pytest
 
 from xil._currencies import CurrencyCode
 from xil.poalim import _get_url, get_df
+
+skip_in_github_actions = pytest.mark.skipif(
+    condition=os.getenv("CI") == "true",
+    reason="Poalim API is requires human verification outside Israel",
+)
 
 
 def _is_weekend(t: date) -> bool:
@@ -32,6 +38,7 @@ def test_get_url(t: date, expected_url: str) -> None:
 
 
 @pytest.mark.live
+@skip_in_github_actions
 @pytest.mark.parametrize(
     "t",
     [
@@ -73,6 +80,7 @@ def expected_currencies() -> list[CurrencyCode]:
 
 
 @pytest.mark.live
+@skip_in_github_actions
 def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
     assert (df.index == expected_currencies).all(), "The currencies are not as expected"
     assert (df[("transfer", "sell")] > df[("transfer", "buy")]).all()
@@ -82,5 +90,6 @@ def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
 
 
 @pytest.mark.live
+@skip_in_github_actions
 def test_multi_date_df(multi_date_df: pd.DataFrame) -> None:
     assert len(multi_date_df.date.unique()) > 1, "Multiple dates are expected"
