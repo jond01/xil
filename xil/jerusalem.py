@@ -9,7 +9,7 @@ import pandas as pd
 from xil._df_normalizer import DataFrameNormalizer
 
 _JERUSALEM_URL = "https://www.bankjerusalem.co.il/capital-market/rates"
-_HEADER = None  # the table's header is not recognized
+_HEADER: None = None  # the table's header is not recognized
 _AMOUNT_NAME_SPLITTER = "\xa0"
 _IDX0 = pd.MultiIndex.from_product(
     [["currency"], ["name", "official rate", "change (%)"]]
