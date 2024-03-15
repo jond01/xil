@@ -80,6 +80,7 @@ disallow_untyped_defs = true
 warn_unused_ignores = true
 warn_return_any = true
 show_error_codes = true
+local_partial_types = true
 exclude = ["dist/"]
 
 [tool.pytest.ini_options]
