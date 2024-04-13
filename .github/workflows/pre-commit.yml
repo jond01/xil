@@ -22,14 +22,8 @@ jobs:
       MYPY_CACHE_DIR: /opt/.cache/mypy
     steps:
       - uses: actions/checkout@v4
-      - name: List
-        run: |
-          echo $(pwd)
-          echo $(ls -a)
-          echo $(ls -a .github)
-          echo $(ls -a .github/workflows/)
       - name: Install Poetry
-        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+        run: pipx install --pip-args="-c ${{ github.workspace }}/.github/workflows/poetry-constraint.txt" poetry
       - uses: actions/setup-python@v5
         with:
           python-version-file: .python-version
