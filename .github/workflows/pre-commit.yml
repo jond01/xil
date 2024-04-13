@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Poetry
-        run: pipx install --pip-args="-c .github/workflows/poetry-constraint.txt" poetry
+        run: pipx install --pip-args="-c ${{ github.workspace }}/.github/workflows/poetry-constraint.txt" poetry
       - uses: actions/setup-python@v5
         with:
           python-version-file: .python-version
