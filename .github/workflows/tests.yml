@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20240324]
+        os: [ubuntu-latest]
         python-version: ["3.12"]
     runs-on: ${{ matrix.os }}
     env:
