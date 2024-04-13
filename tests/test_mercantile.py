@@ -51,4 +51,4 @@ def currencies_fixture() -> set[CurrencyCode]:
 
 @pytest.mark.live
 def test_df(df: pd.DataFrame, currencies: set[CurrencyCode]) -> None:
-    _test_df_helper(df, currencies)
+    _test_df_helper(df, currencies, drop_ngn=False)
