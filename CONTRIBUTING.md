@@ -79,9 +79,9 @@ You need to run this command only once.
 Every time you commit, the pre-commit hooks will run and validate your code to make
 sure it complies with the project's standards. The hooks include the following
 checks:
-- `black`: code formatting
+- `ruff`: code linting and formatting
 - `mypy`: type checking
-- `pylint` and `ruff`: code quality
+- `pylint`: code quality
 
 The full list of hooks can be found in the `.pre-commit-config.yaml` file.
 
