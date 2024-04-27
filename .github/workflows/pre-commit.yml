@@ -17,7 +17,6 @@ jobs:
     env:
       CACHE_DIR: /opt/.cache
       PRE_COMMIT_HOME: /opt/.cache/pre-commit
-      BLACK_CACHE_DIR: /opt/.cache/black
       RUFF_CACHE_DIR: /opt/.cache/ruff
       MYPY_CACHE_DIR: /opt/.cache/mypy
     steps:

@@ -17,6 +17,7 @@ def test_something():
 Based on:
 https://github.com/best-doctor/pytest_network
 """
+
 import socket
 from collections.abc import Iterator
 from typing import NoReturn
