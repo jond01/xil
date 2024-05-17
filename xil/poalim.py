@@ -44,7 +44,7 @@ def get_df(t: date | None = None, keep_last_date_only: bool = True) -> pd.DataFr
     is no specified date t, only the last available date's data is returned.
     """
     df = pd.read_json(_get_url(t))
-    if df.empty:  # pylint: disable=no-member
+    if df.empty:
         return df
 
     df = df[_RELEVANT_COLS]

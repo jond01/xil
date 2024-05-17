@@ -21,7 +21,7 @@ def get_onezero_df(url: str = _ONEZERO_URL) -> pd.DataFrame:
     """Get One Zero bank exchange rates"""
     series = pd.read_json(url, typ="series")
     # series.generatingReportDateTime holds the date in YYYY-MM-DD format
-    df = pd.json_normalize(series.marketingRecords)  # pylint: disable=no-member
+    df = pd.json_normalize(series.marketingRecords)
     df = df[df.fromCurrency == CurrencyCode.ILS]  # remove data duplication
     df.drop(labels="fromCurrency", axis="columns", inplace=True)
     df.columns = _IDX
