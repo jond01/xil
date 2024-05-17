@@ -34,7 +34,7 @@ def get_boi_df(url: str = _BOI_URL) -> pd.DataFrame:
     with get_boi_url_response(url) as response:
         series = pd.read_json(response, typ="series", convert_dates=True)
     assert "exchangeRates" in series
-    df = pd.json_normalize(series.exchangeRates)  # pylint: disable=no-member
+    df = pd.json_normalize(series.exchangeRates)
     df.columns = _IDX
     df = BaseDataFrameNormalizer(df).norm()
     return df
