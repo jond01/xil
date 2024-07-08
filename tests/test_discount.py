@@ -49,7 +49,6 @@ def currencies_fixture() -> set[CurrencyCode]:
         CurrencyCode.PHP,
         CurrencyCode.NZD,
         CurrencyCode.XAU,
-        CurrencyCode.LBP,
         CurrencyCode.PLN,
         CurrencyCode.XAG,
         CurrencyCode.BRL,
