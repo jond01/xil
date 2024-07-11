@@ -18,8 +18,10 @@ def currencies_fixture() -> set[CurrencyCode]:
     return {
         CurrencyCode.CAD,
         CurrencyCode.MXN,
+        CurrencyCode.EGP,
         CurrencyCode.RUB,
         CurrencyCode.JPY,
+        CurrencyCode.LBP,
         CurrencyCode.XAG,
         CurrencyCode.XAU,
         CurrencyCode.CNY,
