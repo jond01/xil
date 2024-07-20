@@ -52,7 +52,6 @@ def get_leumi_df(url: str = _LEUMI_URL) -> pd.DataFrame:
     """Get Leumi Bank exchange rates"""
     series = pd.read_json(url, typ="series", storage_options=UA_HEADER)
     # date = s.yatzigDate  # Hour in `s.topHeaderText`
-    # pylint: disable-next=redefined-outer-name
     df = pd.json_normalize(series.data)
     df = df[
         [
@@ -69,8 +68,3 @@ def get_leumi_df(url: str = _LEUMI_URL) -> pd.DataFrame:
     df = df.loc[df[("currency", "name")] != "סל המטבעות", :]
     df = LeumiNormalizer(df).norm()
     return df
-
-
-if __name__ == "__main__":
-    df = get_leumi_df()
-    print(df)

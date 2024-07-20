@@ -9,6 +9,8 @@ import pytest
 from xil._currencies import CurrencyCode
 from xil.poalim import _get_url, get_df
 
+from ._test_df import _test_df_sanity
+
 skip_in_github_actions = pytest.mark.skipif(
     condition=os.getenv("CI") == "true",
     reason="Poalim API is requires human verification outside Israel",
@@ -82,11 +84,7 @@ def expected_currencies() -> list[CurrencyCode]:
 @pytest.mark.live
 @skip_in_github_actions
 def test_df(df: pd.DataFrame, expected_currencies: list[CurrencyCode]) -> None:
-    assert (df.index == expected_currencies).all(), "The currencies are not as expected"
-    assert (df[("transfer", "sell")] > df[("transfer", "buy")]).all()
-    assert (df[("cash", "sell")] > df[("cash", "buy")]).all()
-    assert (df[("cash", "sell")] > df[("transfer", "sell")]).all()
-    assert (df[("transfer", "buy")] > df[("cash", "buy")]).all()
+    _test_df_sanity(df, expected_currencies)
 
 
 @pytest.mark.live
