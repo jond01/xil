@@ -69,4 +69,5 @@ jobs:
           xil/onezero.py \
           xil/discount.py \
           xil/mercantile.py \
+          xil/leumi.py \
 #          xil/poalim.py \

@@ -20,7 +20,7 @@ The XIL project supports the following banks:
 
 | Bank and data source                                                                                                                                       | XIL module        | Tests              | Bank name (Hebrew)           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|--------------------|------------------------------|
-| [Bank Leumi Le-Israel](https://www.leumi.co.il/Lobby/currency_rates/40806/)                                                                                | `leumi`           | :x:                | בנק לאומי לישראל             |
+| [Bank Leumi Le-Israel](https://www.leumi.co.il/Lobby/currency_rates/40806/)                                                                                | `leumi`           | :white_check_mark: | בנק לאומי לישראל             |
 | [Bank Hapoalim](https://www.bankhapoalim.co.il/he/foreign-currency/exchange-rates)                                                                         | `poalim`          | :white_check_mark: | בנק הפועלים                  |
 | [Mizrahi Tefahot Bank](https://www.mizrahi-tefahot.co.il/brokerage/currancyexchange/)                                                                      | `mizrahi_tefahot` | :x:                | בנק מזרחי טפחות              |
 | [Israel Discount Bank](https://www.discountbank.co.il/private/general-information/foreign-currency-transfers/exchange-rates/)                              | `discount`        | :white_check_mark: | בנק דיסקונט לישראל           |
