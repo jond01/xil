@@ -46,6 +46,7 @@ class CurrencyCode(StrEnum):
     THB = "THB"  # Thai Baht
     CZK = "CZK"  # Czech Koruna
     PHP = "PHP"  # Philippine Peso
+    LBP = "LBP"  # Lebanese Pound
     PLN = "PLN"  # Polish Zloty
     BRL = "BRL"  # Brazilian Real
     CLP = "CLP"  # Chilean Peso

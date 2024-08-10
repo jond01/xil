@@ -49,6 +49,7 @@ def currencies_fixture() -> set[CurrencyCode]:
         CurrencyCode.PHP,
         CurrencyCode.NZD,
         CurrencyCode.XAU,
+        CurrencyCode.LBP,
         CurrencyCode.PLN,
         CurrencyCode.XAG,
         CurrencyCode.BRL,
@@ -64,7 +65,7 @@ def currencies_fixture() -> set[CurrencyCode]:
 
 @pytest.mark.live
 def test_df(
-    df: pd.DataFrame, currencies: set[CurrencyCode], drop_ngn: bool = True
+    df: pd.DataFrame, currencies: set[CurrencyCode], drop_ngn: bool = False
 ) -> None:
     assert set(df.index) == currencies
     if drop_ngn:
