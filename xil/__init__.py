@@ -1,3 +1,3 @@
-"""The XIL package for fetching ILS exchange rates"""
+"""The XIL package for fetching Israeli banks' ILS exchange rates"""
 
-__version__ = "0.0.0"
+from xil._version import __version__
