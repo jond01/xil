@@ -1,6 +1,7 @@
 .idea/
 __pycache__/
 dist/
+.pdm-build/
 .coverage
 
 .DS_Store
