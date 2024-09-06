@@ -21,25 +21,23 @@ jobs:
       MYPY_CACHE_DIR: /opt/.cache/mypy
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: pipx install --pip-args="-c ${{ github.workspace }}/.github/workflows/poetry-constraint.txt" poetry
+      - name: Install uv
+        run: pipx install --pip-args="-c ${{ github.workspace }}/.github/workflows/uv-constraint.txt" uv
       - uses: actions/setup-python@v5
         with:
           python-version-file: .python-version
-          cache: poetry
-          cache-dependency-path: |
-            poetry.lock
-            .github/workflows/env-markers/poetry-install.txt
+          cache: uv
+          cache-dependency-path: uv.lock
       - name: Install dependencies
-        run: poetry install
+        run: uv sync
       - name: Set PY
         id: set-py
         run: echo "PY=$(python -VV | sha256sum | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v4
         with:
           path: ${{ env.CACHE_DIR }}
-          key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-and-deps-${{ hashFiles('.pre-commit-config.yaml', 'poetry.lock') }}
+          key: pre-commit-${{ runner.os }}-python-${{ steps.set-py.outputs.PY }}-config-and-deps-${{ hashFiles('.pre-commit-config.yaml', 'uv.lock') }}
       - name: Run pre-commit
         env:
           PRE_COMMIT_COLOR: always
-        run: poetry run pre-commit run --all-files
+        run: uv run pre-commit run --all-files
