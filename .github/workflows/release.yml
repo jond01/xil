@@ -30,7 +30,6 @@ jobs:
         run: uv build
       - name: Publish the package
         env:
-          TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ inputs.repository == 'pypi' && secrets.PYPI_TOKEN || secrets.TEST_PYPI_TOKEN }}
           TWINE_REPOSITORY: ${{ inputs.repository }}
         run: uvx twine upload dist/*
