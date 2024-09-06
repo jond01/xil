@@ -1,15 +1,20 @@
+"""
+Get the version from Git - PDM hook
+"""
+
+# ruff: noqa: I001
 import os
 
-from pdm.backend.hooks.version import SCMVersion  # type: ignore[import-not-found]
+from pdm.backend.hooks.version import SCMVersion  # type: ignore[import-not-found,unused-ignore] # pylint: disable=import-error
 
 
 def format_version(version: SCMVersion) -> str:
+    """Format Git version"""
     if version.distance is None and not version.dirty:
         # Official version
         return str(version.version)
-    elif os.getenv("PYPI_PUBLISH"):
+    if os.getenv("PYPI_PUBLISH"):
         # Published version
         return f"{version.version}.dev{version.distance or ''}"
-    else:
-        # Local version
-        return f"{version.version}.dev{version.distance or ''}+{version.node}"
+    # Local version
+    return f"{version.version}.dev{version.distance or ''}+{version.node}"
