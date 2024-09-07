@@ -45,9 +45,7 @@ jobs:
           cache: pip
           cache-dependency-path: uv.lock
       - name: Install dependencies
-        run: |
-          uv pip install .
-          uv sync
+        run: uv sync
       - name: Run live tests (needing an internet connection)
         run: uv run coverage run -m pytest -m live
       - name: Run offline tests
