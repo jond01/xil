@@ -11,7 +11,9 @@ updates:
     schedule:
       interval: daily
 
-  - package-ecosystem: pip
-    directory: /
-    schedule:
-      interval: daily
+# Dependabot does not support uv:
+# https://docs.astral.sh/uv/guides/integration/dependency-bots/#dependabot
+#  - package-ecosystem: pip
+#    directory: /
+#    schedule:
+#      interval: daily

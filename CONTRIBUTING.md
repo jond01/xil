@@ -57,15 +57,15 @@ From the root of the project.
 
 #### Virtual environment
 To reproduce the exact Python environment used in this project, install
-[Poetry](https://python-poetry.org/) (version specified in the
-[constraint file](.github/workflows/poetry-constraint.txt)) and run:
+[uv](https://docs.astral.sh/uv/) (version specified in the
+[constraint file](.github/workflows/uv-constraint.txt)) and run:
 ```shell
-poetry install
+uv sync
 ```
 from the root of the project.
-To activate the Poetry virtual environment, run:
+To activate the uv virtual environment, run:
 ```shell
-poetry shell
+source .venv/bin/activate
 ```
 
 ### Pre-commit hooks
@@ -74,7 +74,7 @@ To validate your code before committing, install the pre-commit hooks:
 pre-commit install
 ```
 You need to run this command only once.
-`pre-commit` is installed by Poetry when you run `poetry install`.
+`pre-commit` is installed by uv when you run `uv sync`.
 
 Every time you commit, the pre-commit hooks will run and validate your code to make
 sure it complies with the project's standards. The hooks include the following
@@ -88,20 +88,16 @@ The full list of hooks can be found in the `.pre-commit-config.yaml` file.
 ### Running the tests
 To run the tests, run:
 ```shell
-poetry run pytest
+uv run pytest
 ```
 Or simply `pytest` if you are in the activated virtual environment.
 All the tests should pass. Make sure you run the tests before committing your code.
 
 ### Building the package
 
-To build the package, the following Poetry plugin is required:
-```shell
-poetry self add "poetry-dynamic-versioning[plugin]"
-```
 To build the package, run:
 ```shell
-poetry build
+uv build
 ```
 
 # Release workflow (for maintainers)
