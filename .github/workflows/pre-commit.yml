@@ -19,6 +19,7 @@ jobs:
       PRE_COMMIT_HOME: /opt/.cache/pre-commit
       RUFF_CACHE_DIR: /opt/.cache/ruff
       MYPY_CACHE_DIR: /opt/.cache/mypy
+      FORCE_COLOR: 1
     steps:
       - uses: actions/checkout@v4
       - name: Install uv

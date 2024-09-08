@@ -27,6 +27,8 @@ jobs:
         with:
           python-version-file: .python-version
       - name: Build the package
+        env:
+          FORCE_COLOR: 1
         run: uv build
       - name: Publish the package
         env:
