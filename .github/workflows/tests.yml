@@ -51,7 +51,7 @@ jobs:
       - name: Install Python
         run: uv python install ${{ matrix.python-version }}
       - name: Install dependencies
-        run: uv sync --offline
+        run: uv sync
       - name: Run live tests (needing an internet connection)
         run: uv run --offline coverage run -m pytest -m live
       - name: Run offline tests
