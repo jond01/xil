@@ -56,7 +56,7 @@ jobs:
         run: uv run --offline coverage run -m pytest -m live
       - name: Run offline tests
         if: github.event_name != 'schedule'
-        run: uv run --offline coverage run -am pytest -m "not live" --disable-network --offline
+        run: uv run --offline coverage run -am pytest -m "not live" --disable-network
       - name: Report coverage
         if: github.event_name != 'schedule'
         run: uv run --offline coverage report
