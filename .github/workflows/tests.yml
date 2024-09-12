@@ -51,20 +51,20 @@ jobs:
       - name: Install Python
         run: uv python install ${{ matrix.python-version }}
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --offline
       - name: Run live tests (needing an internet connection)
-        run: uv run coverage run -m pytest -m live
+        run: uv run --offline coverage run -m pytest -m live
       - name: Run offline tests
         if: github.event_name != 'schedule'
-        run: uv run coverage run -am pytest -m "not live" --disable-network
+        run: uv run --offline coverage run -am pytest -m "not live" --disable-network --offline
       - name: Report coverage
         if: github.event_name != 'schedule'
-        run: uv run coverage report
+        run: uv run --offline coverage report
       # The following step will be removed when all the project is covered with tests
       - name: Maintain 100% coverage on tested modules
         if: github.event_name != 'schedule'
         run: |
-          uv run coverage report --fail-under 100 \
+          uv run --offline coverage report --fail-under 100 \
           xil/_currencies.py \
           xil/_headers.py \
           xil/_df_normalizer.py \
