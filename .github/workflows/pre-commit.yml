@@ -45,4 +45,4 @@ jobs:
       - name: Run pre-commit
         env:
           PRE_COMMIT_COLOR: always
-        run: uv run --offline pre-commit run --all-files
+        run: uv run pre-commit run --all-files
