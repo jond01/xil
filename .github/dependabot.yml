@@ -9,7 +9,7 @@ updates:
   - package-ecosystem: pip
     directory: /.github/workflows
     schedule:
-      interval: daily
+      interval: weekly
 
 # Dependabot does not support uv:
 # https://docs.astral.sh/uv/guides/integration/dependency-bots/#dependabot
