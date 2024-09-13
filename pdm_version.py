@@ -2,9 +2,9 @@
 Get the version from Git - PDM hook
 """
 
-# ruff: noqa: I001
 import os
 
+# ruff: noqa: I001
 from pdm.backend.hooks.version import SCMVersion  # type: ignore[import-not-found,unused-ignore] # pylint: disable=import-error
 
 
