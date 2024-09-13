@@ -17,11 +17,11 @@ repos:
     hooks:
       - id: mypy
         name: mypy
-        entry: uv run mypy
+        entry: mypy
         language: system
         types: [python]
       - id: pylint
         name: pylint
-        entry: uv run pylint
+        entry: pylint
         language: system
         types: [python]
