@@ -1,13 +1,10 @@
-[![PyPI](https://img.shields.io/pypi/v/xil)](https://pypi.org/project/xil/#history)
-[![Python Versions](https://img.shields.io/pypi/pyversions/xil)](https://pypi.org/project/xil/)
-
 [![Tests](https://github.com/jond01/xil/actions/workflows/tests.yml/badge.svg)](https://github.com/jond01/xil/actions/workflows/tests.yml)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/xil)](https://pypi.org/project/xil/)
+[![PyPI](https://img.shields.io/pypi/v/xil)](https://pypi.org/project/xil/#history)
 
 # XIL
 
