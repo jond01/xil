@@ -25,7 +25,7 @@ jobs:
         id: uv-version
         run: |
           content=$(cat .github/workflows/uv-constraint.txt)
-          echo "version=${content#uv==}" >> "$GITHUB_OUTPUT"
+          echo "version=${content#uv==}" >> $GITHUB_OUTPUT
       - uses: astral-sh/setup-uv@v2
         with:
           version: ${{ steps.uv-version.outputs.version }}
