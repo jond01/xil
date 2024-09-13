@@ -25,9 +25,8 @@ jobs:
         id: uv-version
         run: |
           content=$(cat .github/workflows/uv-constraint.txt)
-          echo "version=${content#uv==}" >> "$GITHUB_OUTPUT"
-      - name: Install uv
-        uses: astral-sh/setup-uv@v2
+          echo "version=${content#uv==}" >> $GITHUB_OUTPUT
+      - uses: astral-sh/setup-uv@v2
         with:
           version: ${{ steps.uv-version.outputs.version }}
       - name: Build the package
