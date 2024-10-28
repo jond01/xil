@@ -63,13 +63,16 @@ def currencies_fixture() -> set[CurrencyCode]:
     }
 
 
+@pytest.mark.parametrize(
+    "dropped_currencies", [[CurrencyCode.XAU]]
+)  # There's an issue with Gold
 @pytest.mark.live
 def test_df(
-    df: pd.DataFrame, currencies: set[CurrencyCode], drop_ngn: bool = True
+    df: pd.DataFrame,
+    currencies: set[CurrencyCode],
+    dropped_currencies: list[CurrencyCode],
 ) -> None:
     assert set(df.index) == currencies
-    if drop_ngn:
-        # There's an issue with Nigerian naira
-        df = df.drop(index=CurrencyCode.NGN)
+    df = df.drop(index=dropped_currencies)
     for method in ("cash", "transfer"):
         assert (df[(method, "sell")] >= df[(method, "buy")]).all()

@@ -49,6 +49,11 @@ def currencies_fixture() -> set[CurrencyCode]:
     }
 
 
+@pytest.mark.parametrize("dropped_currencies", [[CurrencyCode.XAU]])
 @pytest.mark.live
-def test_df(df: pd.DataFrame, currencies: set[CurrencyCode]) -> None:
-    _test_df_helper(df, currencies, drop_ngn=False)
+def test_df(
+    df: pd.DataFrame,
+    currencies: set[CurrencyCode],
+    dropped_currencies: list[CurrencyCode],
+) -> None:
+    _test_df_helper(df, currencies, dropped_currencies=dropped_currencies)
