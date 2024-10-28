@@ -60,9 +60,11 @@ class CurrencyCode(StrEnum):
     XPT = "XPT"  # Platinum
 
 
+USD_HEB_NAME = 'דולר ארה"ב'
+
 _HEB_CURRENCY_NAME_TO_CODE: dict[str, CurrencyCode] = {
     "שקל חדש": CurrencyCode.ILS,
-    'דולר ארה"ב': CurrencyCode.USD,
+    USD_HEB_NAME: CurrencyCode.USD,
     "לירה שטרלינג": CurrencyCode.GBP,
     'ליש"ט': CurrencyCode.GBP,
     'ליש"ט בריטי': CurrencyCode.GBP,

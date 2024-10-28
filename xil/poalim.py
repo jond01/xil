@@ -7,6 +7,7 @@ from datetime import date
 
 import pandas as pd
 
+from xil._currencies import USD_HEB_NAME
 from xil._df_normalizer import JPYNormalizer
 
 _POALIM_GET_URL = "https://www.bankhapoalim.co.il/he/coin-rates"
@@ -37,6 +38,24 @@ def _get_url(t: date | None) -> str:
     return _POALIM_QUERY + t.strftime(_DATE_FORMAT)
 
 
+class PoalimNormalizer(JPYNormalizer):
+    """Bank HaPoalim data normalizer"""
+
+    _USD_ALIAS = 'דולר ארה"ב - Cloned'
+
+    @classmethod
+    def _fix_usd(cls, raw_name: str) -> str:
+        """Fix USD currency name"""
+        if raw_name == cls._USD_ALIAS:
+            return USD_HEB_NAME
+        return raw_name
+
+    @classmethod
+    def preprocess_names(cls, names: pd.Series) -> pd.Series:
+        names = super().preprocess_names(names)
+        return names.apply(cls._fix_usd)
+
+
 def get_df(t: date | None = None, keep_last_date_only: bool = True) -> pd.DataFrame:
     """
     Get poalim exchange data from the latest available day or a specified
@@ -55,5 +74,5 @@ def get_df(t: date | None = None, keep_last_date_only: bool = True) -> pd.DataFr
     if keep_last_date_only and t is None:
         df = df[df.date == df.date.max()]
 
-    df = JPYNormalizer(df).norm()
+    df = PoalimNormalizer(df).norm()
     return df
