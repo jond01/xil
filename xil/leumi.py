@@ -43,8 +43,8 @@ class LeumiNormalizer(JPYNormalizer):
         return raw_name.replace(cls._QUOT, '"')
 
     @classmethod
-    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
-        names = super()._preprocess_names(names)
+    def preprocess_names(cls, names: pd.Series) -> pd.Series:
+        names = super().preprocess_names(names)
         return names.apply(cls._fix_quot)
 
 

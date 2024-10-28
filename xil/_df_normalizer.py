@@ -51,12 +51,12 @@ class DataFrameNormalizer(BaseDataFrameNormalizer):
 
     def add_code_from_name(self) -> None:
         """Add a ("currency", "code") column from the ("currency", "name") column"""
-        self.df[_CURRENCY_CODE_KEY] = self._preprocess_names(
+        self.df[_CURRENCY_CODE_KEY] = self.preprocess_names(
             self.df[_CURRENCY_NAME_KEY]
         ).apply(currency_from_heb_name)
 
     @classmethod
-    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
+    def preprocess_names(cls, names: pd.Series) -> pd.Series:
         """
         A preprocessing hook to manipulate the names before passing them to the
         currency_from_heb_name function.
@@ -87,6 +87,6 @@ class JPYNormalizer(DataFrameNormalizer):
         )
 
     @classmethod
-    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
-        names = super()._preprocess_names(names)
+    def preprocess_names(cls, names: pd.Series) -> pd.Series:
+        names = super().preprocess_names(names)
         return names.apply(cls._remove_100)

@@ -26,7 +26,7 @@ class JerusalemNormalizer(DataFrameNormalizer):
         return raw_amount.split(_AMOUNT_NAME_SPLITTER)[1]
 
     @classmethod
-    def _preprocess_names(cls, names: pd.Series) -> pd.Series:
+    def preprocess_names(cls, names: pd.Series) -> pd.Series:
         return names.apply(cls._fix_amount)
 
 

@@ -70,7 +70,7 @@ class TestNormalizer:
     def test_preprocess_names(currencies_df: pd.DataFrame) -> None:
         names = currencies_df[_CURRENCY_NAME_KEY]
         with patch.object(
-            DataFrameNormalizer, "_preprocess_names", autospec=True
+            DataFrameNormalizer, "preprocess_names", autospec=True
         ) as mock:
             DataFrameNormalizer(currencies_df).add_code_from_name()
             mock.assert_called_once_with(names)
