@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYPI_PUBLISH: true
+      FORCE_COLOR: 1
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,14 +31,12 @@ jobs:
         with:
           version: ${{ steps.uv-version.outputs.version }}
       - name: Build the package
-        env:
-          FORCE_COLOR: 1
-        run: uv build
+        run: uv build --no-sources
       - name: Publish the package
         env:
-          TWINE_PASSWORD: ${{ inputs.repository == 'pypi' && secrets.PYPI_TOKEN || secrets.TEST_PYPI_TOKEN }}
-          TWINE_REPOSITORY: ${{ inputs.repository }}
-        run: uvx twine upload dist/*
+          UV_PUBLISH_TOKEN: ${{ inputs.repository == 'pypi' && secrets.PYPI_TOKEN || secrets.TEST_PYPI_TOKEN }}
+          UV_PUBLISH_URL: ${{ inputs.repository }}
+        run: uv publish
       - name: Upload source and wheel distributions
         uses: actions/upload-artifact@v4
         with:
