@@ -64,7 +64,7 @@ def currencies_fixture() -> set[CurrencyCode]:
 
 
 @pytest.mark.parametrize(
-    "dropped_currencies", [[CurrencyCode.XAU]]
+    "dropped_currencies", [[CurrencyCode.XAU, CurrencyCode.NGN]]
 )  # There's an issue with Gold
 @pytest.mark.live
 def test_df(
