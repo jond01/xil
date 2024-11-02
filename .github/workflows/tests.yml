@@ -36,6 +36,7 @@ jobs:
     env:
       FORCE_COLOR: 1
       UV_PYTHON: ${{ matrix.python-version }}
+      UV_NO_SYNC: true
     steps:
       - uses: actions/checkout@v4
       - name: Get uv version
@@ -48,9 +49,10 @@ jobs:
           version: ${{ steps.uv-version.outputs.version }}
           enable-cache: true
           cache-dependency-glob: uv.lock
+          cache-suffix: tests
       - name: Install dependencies
         # This step may also install the Python version set by the `UV_PYTHON` env var on the fly if not available
-        run: uv sync
+        run: uv sync --no-group lint --no-group type-check
       - name: Run live tests (needing an internet connection)
         run: uv run coverage run -m pytest -m live
       - name: Run offline tests

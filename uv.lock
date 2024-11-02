@@ -529,31 +529,39 @@ wheels = [
 
 [[package]]
 name = "xil"
-version = "0.3.0.dev156+g58a9e6e"
+version = "0.3.0.dev161+g5ea3646"
 source = { editable = "." }
 dependencies = [
     { name = "pandas", extra = ["html"] },
 ]
 
 [package.dev-dependencies]
-dev = [
-    { name = "coverage" },
-    { name = "mypy" },
-    { name = "pandas-stubs" },
+lint = [
     { name = "pre-commit" },
     { name = "pylint" },
+]
+test = [
+    { name = "coverage" },
     { name = "pytest" },
+]
+type-check = [
+    { name = "mypy" },
+    { name = "pandas-stubs" },
 ]
 
 [package.metadata]
 requires-dist = [{ name = "pandas", extras = ["html"], specifier = ">=2.2.2" }]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "coverage", specifier = ">=7.6.1" },
-    { name = "mypy", specifier = ">=1.11.2" },
-    { name = "pandas-stubs", specifier = ">=2.2.2.240807" },
+lint = [
     { name = "pre-commit", specifier = ">=3.8.0" },
     { name = "pylint", specifier = ">=3.2.6" },
+]
+test = [
+    { name = "coverage", specifier = ">=7.6.1" },
     { name = "pytest", specifier = ">=8.3.2" },
+]
+type-check = [
+    { name = "mypy", specifier = ">=1.11.2" },
+    { name = "pandas-stubs", specifier = ">=2.2.2.240807" },
 ]
