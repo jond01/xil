@@ -32,17 +32,25 @@ Repository = "https://github.com/jond01/xil"
 Documentation = "https://github.com/jond01/xil#readme"
 "Bug Tracker" = "https://github.com/jond01/xil/issues"
 
-[tool.uv]
-dev-dependencies = [
-    # Testing
+[dependency-groups]
+test = [
     "pytest>=8.3.2",
     "coverage>=7.6.1",
-    # Linting
+]
+lint = [
     "pre-commit>=3.8.0",
     "pylint>=3.2.6",
-    # Type-checking
+]
+type-check = [
     "mypy>=1.11.2",
     "pandas-stubs>=2.2.2.240807",
+]
+
+[tool.uv]
+default-groups = [
+    "test",
+    "lint",
+    "type-check",
 ]
 
 [tool.ruff]

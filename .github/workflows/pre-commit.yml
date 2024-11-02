@@ -20,6 +20,7 @@ jobs:
       RUFF_CACHE_DIR: /opt/.cache/ruff
       MYPY_CACHE_DIR: /opt/.cache/mypy
       FORCE_COLOR: 1
+      UV_NO_SYNC: true
     steps:
       - uses: actions/checkout@v4
       - name: Get uv version
@@ -32,6 +33,7 @@ jobs:
           version: ${{ steps.uv-version.outputs.version }}
           enable-cache: true
           cache-dependency-glob: uv.lock
+          cache-suffix: pre-commit
       - name: Install dependencies
         # This step may also install the Python version set in the `.python-version` file on the fly if not available
         run: uv sync
