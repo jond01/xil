@@ -28,7 +28,7 @@ jobs:
         run: |
           content=$(cat .github/workflows/uv-constraint.txt)
           echo "version=${content#uv==}" >> $GITHUB_OUTPUT
-      - uses: astral-sh/setup-uv@v3
+      - uses: astral-sh/setup-uv@v4
         with:
           version: ${{ steps.uv-version.outputs.version }}
           enable-cache: true
