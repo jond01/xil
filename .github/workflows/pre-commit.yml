@@ -31,7 +31,6 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           version: ${{ steps.uv-version.outputs.version }}
-          enable-cache: true
           cache-dependency-glob: uv.lock
           cache-suffix: pre-commit
       - name: Install dependencies
