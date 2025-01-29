@@ -38,6 +38,6 @@ def fixture_boi_banks() -> set[str]:
 @pytest.mark.live
 def test_boi_banks(boi_banks: set[str]) -> None:
     """Test the online set vs. the hard-coded one"""
-    assert (
-        boi_banks == KNOWN_BANKS
-    ), "Mismatch between the updated banks list data from BOI and the saved data"
+    assert boi_banks == KNOWN_BANKS, (
+        "Mismatch between the updated banks list data from BOI and the saved data"
+    )

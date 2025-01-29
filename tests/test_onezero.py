@@ -16,9 +16,9 @@ def df_fixture() -> pd.DataFrame:
     reason="One-zero data is not available on https://www.onezerobank.com/currencies/"
 )
 def test_df(df: pd.DataFrame) -> None:
-    assert (
-        df.index == [CurrencyCode.EUR, CurrencyCode.USD]
-    ).all(), "The currencies are not as expected"
-    assert (
-        df[("transfer", "buy")] < df[("transfer", "sell")]
-    ).all(), "The buy rate is not lower than the sell rate"
+    assert (df.index == [CurrencyCode.EUR, CurrencyCode.USD]).all(), (
+        "The currencies are not as expected"
+    )
+    assert (df[("transfer", "buy")] < df[("transfer", "sell")]).all(), (
+        "The buy rate is not lower than the sell rate"
+    )

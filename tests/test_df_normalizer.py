@@ -125,6 +125,6 @@ class TestJPYNormalizer:
 
     @staticmethod
     def test_norm(jpy_df: pd.DataFrame, normed_jpy_df: pd.DataFrame) -> None:
-        assert (
-            JPYNormalizer(jpy_df).norm().equals(normed_jpy_df)
-        ), "The normalized `jpy_df` is different than expected"
+        assert JPYNormalizer(jpy_df).norm().equals(normed_jpy_df), (
+            "The normalized `jpy_df` is different than expected"
+        )
