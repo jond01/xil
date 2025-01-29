@@ -12,6 +12,9 @@ def df_fixture() -> pd.DataFrame:
 
 
 @pytest.mark.live
+@pytest.mark.skip(
+    reason="One-zero data is not available on https://www.onezerobank.com/currencies/"
+)
 def test_df(df: pd.DataFrame) -> None:
     assert (
         df.index == [CurrencyCode.EUR, CurrencyCode.USD]
