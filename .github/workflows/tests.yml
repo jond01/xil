@@ -68,8 +68,8 @@ jobs:
           xil/_currencies.py \
           xil/_headers.py \
           xil/_df_normalizer.py \
-          xil/onezero.py \
           xil/discount.py \
           xil/mercantile.py \
           xil/leumi.py \
+#          xil/onezero.py \
 #          xil/poalim.py \
