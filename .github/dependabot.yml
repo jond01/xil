@@ -10,8 +10,3 @@ updates:
     directory: /.github/workflows
     schedule:
       interval: weekly
-
-  - package-ecosystem: uv
-    directory: /
-    schedule:
-      interval: daily
