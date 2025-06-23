@@ -43,7 +43,6 @@ class CurrencyCode(StrEnum):
     TWD = "TWD"  # New Taiwan Dollar
     HRK = "HRK"  # Croatian Kuna
     SAL = "SAL"  # Salvadoran Colon
-    THB = "THB"  # Thai Baht
     CZK = "CZK"  # Czech Koruna
     PHP = "PHP"  # Philippine Peso
     LBP = "LBP"  # Lebanese Pound

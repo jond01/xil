@@ -43,7 +43,6 @@ def currencies_fixture() -> set[CurrencyCode]:
         CurrencyCode.HRK,
         CurrencyCode.NOK,
         CurrencyCode.SAL,
-        CurrencyCode.THB,
         CurrencyCode.SGD,
         CurrencyCode.CZK,
         CurrencyCode.PHP,
