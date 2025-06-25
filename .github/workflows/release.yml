@@ -18,6 +18,8 @@ jobs:
     env:
       PYPI_PUBLISH: true
       FORCE_COLOR: 1
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
