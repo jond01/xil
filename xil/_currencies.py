@@ -51,6 +51,8 @@ class CurrencyCode(StrEnum):
     CLP = "CLP"  # Chilean Peso
     ARS = "ARS"  # Argentine Peso
     RON = "RON"  # Romanian Leu
+    COP = "COP"  # Colombian Peso
+    THB = "THB"  # Thai Baht
 
     # ISO 4217 non-currencies
     XAG = "XAG"  # Silver

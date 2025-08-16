@@ -59,6 +59,8 @@ def currencies_fixture() -> set[CurrencyCode]:
         CurrencyCode.DKK,
         CurrencyCode.JOD,
         CurrencyCode.RON,
+        CurrencyCode.THB,
+        CurrencyCode.COP,
     }
 
 
