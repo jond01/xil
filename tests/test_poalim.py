@@ -75,7 +75,6 @@ def expected_currencies() -> list[CurrencyCode]:
         CurrencyCode.NOK,
         CurrencyCode.CAD,
         CurrencyCode.AUD,
-        CurrencyCode.JPY,
         CurrencyCode.JOD,
         CurrencyCode.TRY,
     ]
