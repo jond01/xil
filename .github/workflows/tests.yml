@@ -38,7 +38,7 @@ jobs:
       UV_PYTHON: ${{ matrix.python-version }}
       UV_NO_SYNC: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Get uv version
         id: uv-version
         run: |
