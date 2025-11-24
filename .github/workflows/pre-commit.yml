@@ -22,7 +22,7 @@ jobs:
       FORCE_COLOR: 1
       UV_NO_SYNC: true
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Get uv version
         id: uv-version
         run: |
