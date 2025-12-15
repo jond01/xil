@@ -39,7 +39,7 @@ jobs:
           UV_PUBLISH_URL: ${{ inputs.repository == 'pypi' && 'https://upload.pypi.org/legacy/' || 'https://test.pypi.org/legacy/' }}
         run: uv publish
       - name: Upload source and wheel distributions
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: python-build-archives
           path: dist/
